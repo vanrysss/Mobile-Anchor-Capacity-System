@@ -19,6 +19,13 @@
 		2D224625192EA5F500865C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460D192EA5F500865C2B /* UIKit.framework */; };
 		2D22462D192EA5F500865C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D22462B192EA5F500865C2B /* InfoPlist.strings */; };
 		2D22462F192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22462E192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m */; };
+		2D22463B192EA62D00865C2B /* CalculationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224639192EA62D00865C2B /* CalculationViewController.m */; };
+		2D22463C192EA62D00865C2B /* CalculationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D22463A192EA62D00865C2B /* CalculationViewController.xib */; };
+		2D22463F192EBFC600865C2B /* Soil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22463E192EBFC600865C2B /* Soil.m */; };
+		2D224642192EC14000865C2B /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224641192EC14000865C2B /* Vehicle.m */; };
+		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
+		2DD63CF019302B5200C27F12 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD63CEF19302B5200C27F12 /* ItemsViewController.m */; };
+		2DD63CF319302D8200C27F12 /* CalculationItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD63CF219302D8200C27F12 /* CalculationItemStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,19 @@
 		2D22462A192EA5F500865C2B /* Mobile Anchor Capacity SystemTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mobile Anchor Capacity SystemTests-Info.plist"; sourceTree = "<group>"; };
 		2D22462C192EA5F500865C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D22462E192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mobile_Anchor_Capacity_SystemTests.m; sourceTree = "<group>"; };
+		2D224638192EA62D00865C2B /* CalculationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationViewController.h; sourceTree = "<group>"; };
+		2D224639192EA62D00865C2B /* CalculationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationViewController.m; sourceTree = "<group>"; };
+		2D22463A192EA62D00865C2B /* CalculationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationViewController.xib; sourceTree = "<group>"; };
+		2D22463D192EBFC600865C2B /* Soil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soil.h; sourceTree = "<group>"; };
+		2D22463E192EBFC600865C2B /* Soil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soil.m; sourceTree = "<group>"; };
+		2D224640192EC14000865C2B /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		2D224641192EC14000865C2B /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
+		2D224643192EC2E100865C2B /* Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculation.h; sourceTree = "<group>"; };
+		2D224644192EC2E100865C2B /* Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculation.m; sourceTree = "<group>"; };
+		2DD63CEE19302B5200C27F12 /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
+		2DD63CEF19302B5200C27F12 /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
+		2DD63CF119302D8200C27F12 /* CalculationItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationItemStore.h; sourceTree = "<group>"; };
+		2DD63CF219302D8200C27F12 /* CalculationItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationItemStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +131,19 @@
 				2D224619192EA5F500865C2B /* AppDelegate.m */,
 				2D22461B192EA5F500865C2B /* Images.xcassets */,
 				2D224610192EA5F500865C2B /* Supporting Files */,
+				2D224638192EA62D00865C2B /* CalculationViewController.h */,
+				2D224639192EA62D00865C2B /* CalculationViewController.m */,
+				2D22463A192EA62D00865C2B /* CalculationViewController.xib */,
+				2D22463D192EBFC600865C2B /* Soil.h */,
+				2D22463E192EBFC600865C2B /* Soil.m */,
+				2D224640192EC14000865C2B /* Vehicle.h */,
+				2D224641192EC14000865C2B /* Vehicle.m */,
+				2D224643192EC2E100865C2B /* Calculation.h */,
+				2D224644192EC2E100865C2B /* Calculation.m */,
+				2DD63CEE19302B5200C27F12 /* ItemsViewController.h */,
+				2DD63CEF19302B5200C27F12 /* ItemsViewController.m */,
+				2DD63CF119302D8200C27F12 /* CalculationItemStore.h */,
+				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
 			);
 			path = "Mobile Anchor Capacity System";
 			sourceTree = "<group>";
@@ -219,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D22463C192EA62D00865C2B /* CalculationViewController.xib in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
 			);
@@ -239,8 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D22463F192EBFC600865C2B /* Soil.m in Sources */,
+				2D224645192EC2E100865C2B /* Calculation.m in Sources */,
+				2DD63CF019302B5200C27F12 /* ItemsViewController.m in Sources */,
 				2D22461A192EA5F500865C2B /* AppDelegate.m in Sources */,
+				2DD63CF319302D8200C27F12 /* CalculationItemStore.m in Sources */,
+				2D22463B192EA62D00865C2B /* CalculationViewController.m in Sources */,
 				2D224616192EA5F500865C2B /* main.m in Sources */,
+				2D224642192EC14000865C2B /* Vehicle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +479,7 @@
 				2D224634192EA5F500865C2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D224635192EA5F500865C2B /* Build configuration list for PBXNativeTarget "Mobile Anchor Capacity SystemTests" */ = {
 			isa = XCConfigurationList;
@@ -447,6 +488,7 @@
 				2D224637192EA5F500865C2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
