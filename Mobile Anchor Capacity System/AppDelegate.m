@@ -17,8 +17,10 @@
     
     //create ItemsViewCOntroller
     ItemsViewController *itemsViewController = [[ItemsViewController alloc]init];
-    //place tableview in the window hierarchy
-    self.window.rootViewController = itemsViewController;
+    //create instance of UINAvigationController
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:itemsViewController];
+    
+    self.window.rootViewController =navController;
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

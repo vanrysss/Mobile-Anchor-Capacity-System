@@ -7,11 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class Calculation;
 
 @interface CalculationItemStore : NSObject
+
 @property(nonatomic,readonly) NSArray *allCalculations;
+
 +(instancetype)sharedStore;
--(Calculation*)createCalculation;
+-(Calculation *)createCalculation;
+-(void)removeItem:(Calculation *)item;
+-(void)moveItemAtIndex:(NSInteger)fromIndex
+                toIndex:(NSInteger)toIndex;
 
 @end

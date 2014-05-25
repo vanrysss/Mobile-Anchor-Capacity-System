@@ -15,10 +15,12 @@
 
 @interface Calculation : NSObject
 
-@property NSString *title;
-@property NSString * engineerName;
-@property NSString *jobSite;
-@property NSDate *date;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic,copy)  NSString * engineerName;
+@property (nonatomic,copy) NSString *jobSite;
+@property (nonatomic,readonly,strong) NSDate *creationDate;
+@property (nonatomic, copy) NSString *calcKey;
+
 @property double latitude;
 @property double longitude;
 @property int beta;
@@ -35,12 +37,12 @@
 @property double momentValue;
 @property double forceValue;
 
++ (instancetype)randomCalculation;
 -(double)Alpha1;
 -(double)Alpha2;
 -(double)Pp;
 -(double)AnchorCapacity;
 -(double)MomentCapacity;
 -(void)resetCalculation:(Calculation*)c;
--(instancetype)init;
--(instancetype)initWithItemName:(NSString*)value;
+-(id)init;
 @end

@@ -24,6 +24,7 @@
 		2D22463F192EBFC600865C2B /* Soil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22463E192EBFC600865C2B /* Soil.m */; };
 		2D224642192EC14000865C2B /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224641192EC14000865C2B /* Vehicle.m */; };
 		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
+		2DC37EE519311E28001AC4DF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC37EE419311E28001AC4DF /* HeaderView.xib */; };
 		2DD63CF019302B5200C27F12 /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD63CEF19302B5200C27F12 /* ItemsViewController.m */; };
 		2DD63CF319302D8200C27F12 /* CalculationItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD63CF219302D8200C27F12 /* CalculationItemStore.m */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		2D224641192EC14000865C2B /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
 		2D224643192EC2E100865C2B /* Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculation.h; sourceTree = "<group>"; };
 		2D224644192EC2E100865C2B /* Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculation.m; sourceTree = "<group>"; };
+		2DC37EE419311E28001AC4DF /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		2DD63CEE19302B5200C27F12 /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
 		2DD63CEF19302B5200C27F12 /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
 		2DD63CF119302D8200C27F12 /* CalculationItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationItemStore.h; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				2D224644192EC2E100865C2B /* Calculation.m */,
 				2DD63CEE19302B5200C27F12 /* ItemsViewController.h */,
 				2DD63CEF19302B5200C27F12 /* ItemsViewController.m */,
+				2DC37EE419311E28001AC4DF /* HeaderView.xib */,
 				2DD63CF119302D8200C27F12 /* CalculationItemStore.h */,
 				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
 			);
@@ -255,6 +258,7 @@
 				2D22463C192EA62D00865C2B /* CalculationViewController.xib in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
+				2DC37EE519311E28001AC4DF /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

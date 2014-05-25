@@ -9,57 +9,62 @@
 #import "Calculation.h"
 #import <Foundation/Foundation.h>
 
+@interface Calculation()
+@property (nonatomic, strong) NSDate *creationDate;
+
+@end
+
 @implementation Calculation
 
 -(double)Alpha1{
-    self.delta = (self.calcSoil.frictionAngle) / 3;
+    self.delta = (_calcSoil.frictionAngle) / 3;
     
-    double top = cos(self.beta) - tan(self.delta) * sin(self.beta);
-    double bot = sin(self.beta) + tan(self.delta) * cos(self.beta);
+    double top = cos(_beta) - tan(_delta) * sin(_beta);
+    double bot = sin(_beta) + tan(_delta) * cos(_beta);
     
-    return sin(self.beta) + cos(self.beta) *(top/bot);
+    return sin(_beta) + cos(_beta) *(top/bot);
 }
 
 -(double)Alpha2{
-    self.delta = (self.calcSoil.frictionAngle) / 3;
-    double top = cos(self.beta) - tan(self.delta) * sin(self.beta);
-    double bot = sin(self.beta) + tan(self.delta) * cos(self.beta);
+    self.delta = (_calcSoil.frictionAngle) / 3;
+    double top = cos(_beta) - tan(_delta) * sin(_beta);
+    double bot = sin(_beta) + tan(_delta) * cos(_beta);
     
-    return sin(self.beta) + sin(self.theta) *(top/bot);
+    return sin(_beta) + sin(_theta) *(top/bot);
 
 }
 
 -(double)Pp{
     
-    double answer = 0.5 * (self.calcSoil.unitWeight * KG_TO_KN) * pow(self.bladeDepth,2) * self.calcVehicle.bladeWidth * self.Kp + 2 *self.calcSoil.cohesion * self.calcVehicle.bladeWidth * sqrt(self.Kp);
+    double answer = 0.5 * (_calcSoil.unitWeight * KG_TO_KN) * pow(_bladeDepth,2) * _calcVehicle.bladeWidth * _Kp + 2 *_calcSoil.cohesion * _calcVehicle.bladeWidth * sqrt(_Kp);
     
     return answer;
 }
 
 -(double)AnchorCapacity{
-    self.delta = self.calcSoil.frictionAngle / 3;
+    _delta = _calcSoil.frictionAngle / 3;
     
     //in order to prevent division by zero
-    if (self.beta ==0 && self.theta == 0) {
-        self.beta = 1;
-        self.theta = 1;
+    if (_beta ==0 && _theta == 0) {
+        _beta = 1;
+        _theta = 1;
     }
     
-    self.Kp = pow(tan(45* self.calcSoil.frictionAngle)/2, 2);
-    if (self.theta - self.beta >= self.delta) {
-        self.Kp=0;
-    }else if (self.theta - self.beta >0){
-        self.Kp = 0.5 * self.Kp;
+    _Kp = pow(tan(45* _calcSoil.frictionAngle)/2, 2);
+    if (_theta - _beta >= _delta) {
+        _Kp=0;
+    }else if (_theta - _beta >0){
+        _Kp = 0.5 * _Kp;
     }
     
-    double gamma = self.calcSoil.unitWeight * KG_TO_KN;
-    double nb = self.Kp * [self Alpha1];
-    double nc = 2 * sqrt(self.Kp) * [self Alpha1];
+    double gamma = _calcSoil.unitWeight * KG_TO_KN;
+    double nb = _Kp * [self Alpha1];
+    double nc = 2 * sqrt(_Kp) * [self Alpha1];
     double nct = [self Alpha1] / [self Alpha2];
     double nw = 1/[self Alpha2];
-    double wv = self.calcVehicle.vehicleWeight * KG_TO_KN;
+    double wv = _calcVehicle.vehicleWeight * KG_TO_KN;
     
-    double prelim = 0.5 * gamma * pow(self.bladeDepth, 2) * self.calcVehicle.bladeWidth * nb + (self.calcSoil.cohesion * self.calcVehicle.bladeWidth * nc) + (self.calcSoil.cohesion * self.calcVehicle.TrackArea * nct) + (wv * nw);
+    double prelim = 0.5 * gamma * pow(_bladeDepth, 2) * _calcVehicle.bladeWidth * nb + (_calcSoil.cohesion * _calcVehicle.bladeWidth * nc) + (_calcSoil.cohesion * _calcVehicle.TrackArea * nct) + (wv * nw);
     
     self.forceValue = prelim * KN_TO_KG;
     return self.forceValue;
@@ -67,10 +72,10 @@
 }
 
 -(double)MomentCapacity{
-    double wv = self.calcVehicle.vehicleWeight * KG_TO_KN;
-    double top = (wv *(self.calcVehicle.centerOfGravity * cos(self.beta) - (self.bladeDepth + self.calcVehicle.centerofGravityHeight) * sin(self.beta)) + [self Pp] * (self.bladeDepth/3));
+    double wv = _calcVehicle.vehicleWeight * KG_TO_KN;
+    double top = (wv *(_calcVehicle.centerOfGravity * cos(_beta) - (_bladeDepth + _calcVehicle.centerofGravityHeight) * sin(_beta)) + [self Pp] * (_bladeDepth/3));
     
-    double bot = cos(self.theta - self.beta) * (self.bladeDepth + self.anchorHeight) + sin(self.theta - self.beta) * self.anchorSetback;
+    double bot = cos(_theta - _beta) * (_bladeDepth + _anchorHeight) + sin(_theta - _beta) * _anchorSetback;
     
     double prelim = (top/bot);
     self.momentValue= prelim * KN_TO_KG;
@@ -85,16 +90,33 @@
     c.theta =0;
     
 }
--(instancetype)initWithItemName:(NSString *)value{
+
++(id)randomCalculation{
+    Calculation *newCalc = [[self alloc]initWithCalcTitle:@"name"];
+    return newCalc;
+}
+
+- (id)init {
+    return [self initWithCalcTitle:@"title"];
+}
+
+- (id)initWithCalcTitle:(NSString *)itemTitle{
     self = [super init];
-    if (self) {
-        _title = value;
+    
+    if(self){
+        self.title = itemTitle;
+        self.creationDate = [[NSDate alloc]init];
+        
+        NSUUID *uuid = [[NSUUID alloc]init];
+        NSString *key = [uuid UUIDString];
+        _calcKey = key;
         
     }
     return self;
 }
--(instancetype)init{
-    return [self initWithItemName:@"Item"];
+
+-(void) dealloc{
+    NSLog(@"Destroyed: %@",self);
 }
 
 @end

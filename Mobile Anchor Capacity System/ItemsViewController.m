@@ -9,57 +9,132 @@
 #import "ItemsViewController.h"
 #import "Calculation.h"
 #import "CalculationItemStore.h"
+#import "CalculationViewController.h"
 
 @interface ItemsViewController()
-@property  (nonatomic,strong) IBOutlet UIView *headerView;
-
 @end
 
 @implementation ItemsViewController
 
--(instancetype) init{
-    //call super class
+- (instancetype)init
+{
+    // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        for (int i=0; i <5; i++) {
-            [[CalculationItemStore sharedStore]init];
-        }
+        UINavigationItem *navItem = self.navigationItem;
+        navItem.title = @"MACS";
+        
+        // Create a new bar button item that will send
+        // addNewItem: to CalculationsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(addNewItem:)];
+        
+        // Set this bar button item as the right item in the navigationItem
+        navItem.rightBarButtonItem = bbi;
+        
+        navItem.leftBarButtonItem = self.editButtonItem;
     }
     return self;
 }
--(instancetype)initWithStyle:(UITableViewStyle)style{
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
     return [self init];
 }
 
--(void)viewDidLoad{
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+    
+    [self.tableView registerClass:[UITableViewCell class]
+           forCellReuseIdentifier:@"UITableViewCell"];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[[CalculationItemStore sharedStore]allCalculations]count];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.tableView reloadData];
 }
 
--(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[[CalculationItemStore sharedStore] allCalculations] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Get a new or recycled cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     
-    //create instance with default appearance
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    
-    //set text on the cell with a description of the Calculation
-    NSArray *items =[[CalculationItemStore sharedStore]allCalculations];
+    // Set the text on the cell with the description of the item
+    // that is at the nth index of items, where n = row this cell
+    // will appear in on the tableview
+    NSArray *items = [[CalculationItemStore sharedStore] allCalculations];
     Calculation *item = items[indexPath.row];
     
-    cell.textLabel.text = item.title;
+    cell.textLabel.text = [item description];
     
     return cell;
 }
 
--(IBAction)addNewItem:(id)sender{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CalculationViewController *detailViewController = [[CalculationViewController alloc] init];
     
+    NSArray *items = [[CalculationItemStore sharedStore] allCalculations];
+    Calculation *selectedItem = items[indexPath.row];
+    
+    // Give detail view controller a pointer to the item object in row
+    detailViewController.calculation = selectedItem;
+    
+    // Push it onto the top of the navigation controller's stack
+    [self.navigationController pushViewController:detailViewController
+                                         animated:YES];
 }
 
--(IBAction)toggleEditingMode:(id)sender{
+- (void)   tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // If the table view is asking to commit a delete command...
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSArray *items = [[CalculationItemStore sharedStore] allCalculations];
+        Calculation *item = items[indexPath.row];
+        [[CalculationItemStore sharedStore] removeItem:item];
+        
+        // Also remove that row from the table view with an animation
+        [tableView deleteRowsAtIndexPaths:@[indexPath]
+                         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)   tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[CalculationItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row
+                                        toIndex:destinationIndexPath.row];
+}
+
+- (IBAction)addNewItem:(id)sender
+{
+    // Create a new Calculation and add it to the store
+    Calculation *newItem = [[CalculationItemStore sharedStore] createCalculation];
     
+    CalculationViewController *detailViewController = [[CalculationViewController alloc]initForNewItem:YES];
+    
+    detailViewController.calculation = newItem;
+    
+    detailViewController.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
+    
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:detailViewController];
+    
+    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:navController animated:YES completion:NULL];
 }
 
 @end

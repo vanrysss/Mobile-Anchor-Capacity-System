@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Calculation;
+
 @interface CalculationViewController : UIViewController
+
+@property (nonatomic,strong) Calculation *calculation;
+@property (nonatomic, copy) void (^dismissBlock)(void);
+
+- (instancetype)initForNewItem:(BOOL)isNew;
+
 
 @end
