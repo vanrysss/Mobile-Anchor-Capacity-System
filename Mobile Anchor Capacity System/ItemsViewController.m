@@ -9,7 +9,7 @@
 #import "ItemsViewController.h"
 #import "Calculation.h"
 #import "CalculationItemStore.h"
-#import "CalculationViewController.h"
+#import "CalculationDetailViewController.h"
 
 @interface ItemsViewController()
 @end
@@ -74,14 +74,14 @@
     NSArray *items = [[CalculationItemStore sharedStore] allCalculations];
     Calculation *item = items[indexPath.row];
     
-    cell.textLabel.text = [item description];
+    cell.textLabel.text = item.title;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CalculationViewController *detailViewController = [[CalculationViewController alloc] init];
+    CalculationDetailViewController *detailViewController = [[CalculationDetailViewController alloc] init];
     
     NSArray *items = [[CalculationItemStore sharedStore] allCalculations];
     Calculation *selectedItem = items[indexPath.row];
@@ -123,7 +123,7 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     // Create a new Calculation and add it to the store
     Calculation *newItem = [[CalculationItemStore sharedStore] createCalculation];
     
-    CalculationViewController *detailViewController = [[CalculationViewController alloc]initForNewItem:YES];
+    CalculationDetailViewController *detailViewController = [[CalculationDetailViewController alloc]initForNewItem:YES];
     
     detailViewController.calculation = newItem;
     
@@ -133,7 +133,7 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:detailViewController];
     
-    navController.modalPresentationStyle = UIModalPresentationFormSheet;
+    navController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:navController animated:YES completion:NULL];
 }
 

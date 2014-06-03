@@ -10,8 +10,8 @@
 
 @interface Vehicle : NSObject
 
-@property NSString *vehicleClass;
-@property NSString *vehicleType;
+@property(retain,nonatomic) NSString *vehicleClass;
+@property(retain,nonatomic) NSString *vehicleType;
 @property double centerOfGravity; // distance of vehicle center of gravity from anchor
 @property double centerofGravityHeight; // height of center of gravity from soil
 @property double vehicleWeight; // weight of vehicle

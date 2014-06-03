@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */; };
+		2D0FE7601932FF36001CCCF0 /* CalculationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */; };
 		2D22460A192EA5F500865C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D224609192EA5F500865C2B /* Foundation.framework */; };
 		2D22460C192EA5F500865C2B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460B192EA5F500865C2B /* CoreGraphics.framework */; };
 		2D22460E192EA5F500865C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460D192EA5F500865C2B /* UIKit.framework */; };
@@ -19,8 +21,6 @@
 		2D224625192EA5F500865C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460D192EA5F500865C2B /* UIKit.framework */; };
 		2D22462D192EA5F500865C2B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D22462B192EA5F500865C2B /* InfoPlist.strings */; };
 		2D22462F192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22462E192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m */; };
-		2D22463B192EA62D00865C2B /* CalculationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224639192EA62D00865C2B /* CalculationViewController.m */; };
-		2D22463C192EA62D00865C2B /* CalculationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D22463A192EA62D00865C2B /* CalculationViewController.xib */; };
 		2D22463F192EBFC600865C2B /* Soil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22463E192EBFC600865C2B /* Soil.m */; };
 		2D224642192EC14000865C2B /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224641192EC14000865C2B /* Vehicle.m */; };
 		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
@@ -40,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationDetailViewController.h; sourceTree = "<group>"; };
+		2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationDetailViewController.m; sourceTree = "<group>"; };
+		2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationDetailViewController.xib; sourceTree = "<group>"; };
 		2D224606192EA5F500865C2B /* Mobile Anchor Capacity System.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Anchor Capacity System.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D224609192EA5F500865C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2D22460B192EA5F500865C2B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,9 +59,6 @@
 		2D22462A192EA5F500865C2B /* Mobile Anchor Capacity SystemTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mobile Anchor Capacity SystemTests-Info.plist"; sourceTree = "<group>"; };
 		2D22462C192EA5F500865C2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D22462E192EA5F500865C2B /* Mobile_Anchor_Capacity_SystemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mobile_Anchor_Capacity_SystemTests.m; sourceTree = "<group>"; };
-		2D224638192EA62D00865C2B /* CalculationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationViewController.h; sourceTree = "<group>"; };
-		2D224639192EA62D00865C2B /* CalculationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationViewController.m; sourceTree = "<group>"; };
-		2D22463A192EA62D00865C2B /* CalculationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationViewController.xib; sourceTree = "<group>"; };
 		2D22463D192EBFC600865C2B /* Soil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soil.h; sourceTree = "<group>"; };
 		2D22463E192EBFC600865C2B /* Soil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soil.m; sourceTree = "<group>"; };
 		2D224640192EC14000865C2B /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
@@ -133,9 +133,6 @@
 				2D224619192EA5F500865C2B /* AppDelegate.m */,
 				2D22461B192EA5F500865C2B /* Images.xcassets */,
 				2D224610192EA5F500865C2B /* Supporting Files */,
-				2D224638192EA62D00865C2B /* CalculationViewController.h */,
-				2D224639192EA62D00865C2B /* CalculationViewController.m */,
-				2D22463A192EA62D00865C2B /* CalculationViewController.xib */,
 				2D22463D192EBFC600865C2B /* Soil.h */,
 				2D22463E192EBFC600865C2B /* Soil.m */,
 				2D224640192EC14000865C2B /* Vehicle.h */,
@@ -147,6 +144,9 @@
 				2DC37EE419311E28001AC4DF /* HeaderView.xib */,
 				2DD63CF119302D8200C27F12 /* CalculationItemStore.h */,
 				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
+				2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */,
+				2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */,
+				2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */,
 			);
 			path = "Mobile Anchor Capacity System";
 			sourceTree = "<group>";
@@ -255,8 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D22463C192EA62D00865C2B /* CalculationViewController.xib in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
+				2D0FE7601932FF36001CCCF0 /* CalculationDetailViewController.xib in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
 				2DC37EE519311E28001AC4DF /* HeaderView.xib in Resources */,
 			);
@@ -282,9 +282,9 @@
 				2DD63CF019302B5200C27F12 /* ItemsViewController.m in Sources */,
 				2D22461A192EA5F500865C2B /* AppDelegate.m in Sources */,
 				2DD63CF319302D8200C27F12 /* CalculationItemStore.m in Sources */,
-				2D22463B192EA62D00865C2B /* CalculationViewController.m in Sources */,
 				2D224616192EA5F500865C2B /* main.m in Sources */,
 				2D224642192EC14000865C2B /* Vehicle.m in Sources */,
+				2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +407,7 @@
 				GCC_PREFIX_HEADER = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -420,6 +421,7 @@
 				GCC_PREFIX_HEADER = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -110,6 +110,8 @@
         NSUUID *uuid = [[NSUUID alloc]init];
         NSString *key = [uuid UUIDString];
         _calcKey = key;
+        _calcVehicle = [[Vehicle alloc]init];
+        _calcSoil = [[Soil alloc]init];
         
     }
     return self;

@@ -26,12 +26,12 @@
 @property int beta;
 @property double bladeDepth;
 @property double delta;
-@property double theta;
+@property int theta;
 @property double anchorSetback;
 @property double anchorHeight;
 @property double Kp;
 
-@property Soil *calcSoil;
+@property  Soil *calcSoil;
 @property Vehicle *calcVehicle;
 
 @property double momentValue;
