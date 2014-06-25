@@ -9,6 +9,8 @@
 #import "Calculation.h"
 #import <Foundation/Foundation.h>
 
+#define degreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
+
 @interface Calculation()
 @property (nonatomic, strong) NSDate *creationDate;
 
@@ -17,20 +19,20 @@
 @implementation Calculation
 
 -(double)Alpha1{
-    self.delta = (_calcSoil.frictionAngle) / 3;
+    _delta = (_calcSoil.frictionAngle) / 3;
     
-    double top = cos(_beta) - tan(_delta) * sin(_beta);
-    double bot = sin(_beta) + tan(_delta) * cos(_beta);
+    double top = cos(degreesToRadians(_beta)) - tan(degreesToRadians(_delta)) * sin(degreesToRadians(_beta));
+    double bot = sin(degreesToRadians(_beta)) + tan(degreesToRadians(_delta)) * cos(degreesToRadians(_beta));
     
-    return sin(_beta) + cos(_beta) *(top/bot);
+    return sin(degreesToRadians(_beta)) + cos(degreesToRadians(_beta)) *(top/bot);
 }
 
 -(double)Alpha2{
-    self.delta = (_calcSoil.frictionAngle) / 3;
-    double top = cos(_beta) - tan(_delta) * sin(_beta);
-    double bot = sin(_beta) + tan(_delta) * cos(_beta);
+    _delta = (_calcSoil.frictionAngle) / 3;
+    double top = cos(degreesToRadians(_beta)) - tan(degreesToRadians(_delta)) * sin(degreesToRadians(_beta));
+    double bot = sin(degreesToRadians(_beta)) + tan(degreesToRadians(_delta)) * cos(degreesToRadians(_beta));
     
-    return sin(_beta) + sin(_theta) *(top/bot);
+    return sin(degreesToRadians(_beta)) + sin(degreesToRadians(_theta)) *(top/bot);
 
 }
 
@@ -50,7 +52,10 @@
         _theta = 1;
     }
     
-    _Kp = pow(tan(45* _calcSoil.frictionAngle)/2, 2);
+    double alph1 =[self Alpha1];
+    double alph2 = [self Alpha2];
+    
+    _Kp = pow(tan(45.0* _calcSoil.frictionAngle)/2.0, 2.0);
     if (_theta - _beta >= _delta) {
         _Kp=0;
     }else if (_theta - _beta >0){
@@ -58,15 +63,27 @@
     }
     
     double gamma = _calcSoil.unitWeight * KG_TO_KN;
-    double nb = _Kp * [self Alpha1];
-    double nc = 2 * sqrt(_Kp) * [self Alpha1];
-    double nct = [self Alpha1] / [self Alpha2];
-    double nw = 1/[self Alpha2];
+    double nb = _Kp * alph1;
+    double nc = 2 * sqrt(_Kp) * alph1;
+    double nct = alph1 / alph2;
+    double nw = 1/alph2;
     double wv = _calcVehicle.vehicleWeight * KG_TO_KN;
     
     double prelim = 0.5 * gamma * pow(_bladeDepth, 2) * _calcVehicle.bladeWidth * nb + (_calcSoil.cohesion * _calcVehicle.bladeWidth * nc) + (_calcSoil.cohesion * _calcVehicle.TrackArea * nct) + (wv * nw);
     
     self.forceValue = prelim * KN_TO_KG;
+    
+    //log for error checking
+    NSLog(@" Kp %f", _Kp);
+    NSLog(@" delta %f", _delta);
+    NSLog(@" gamma %f", gamma);
+    NSLog(@" nb %f", nb);
+    NSLog(@" nc %f", nc);
+    NSLog(@" nct %f", nct);
+    NSLog(@" nw %f", nw);
+    NSLog(@" wv %f", wv);
+    NSLog(@"%f", prelim);
+    
     return self.forceValue;
     
 }

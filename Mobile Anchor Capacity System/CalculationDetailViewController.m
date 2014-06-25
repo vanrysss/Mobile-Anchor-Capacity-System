@@ -10,6 +10,9 @@
 #import "Calculation.h"
 #import "Vehicle.h"
 #import "Soil.h"
+#import "SoilCreatorViewController.h"
+#import "CalculationItemStore.h"
+
 
 @interface CalculationDetailViewController()
 @property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
@@ -26,7 +29,7 @@
         if (isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                       target:self
-                                                                                      action:@selector(save:)];
+                                                                                      action:@selector (save:)];
             self.navigationItem.rightBarButtonItem = doneItem;
             
             UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -35,43 +38,61 @@
             self.navigationItem.leftBarButtonItem = cancelItem;
         }
         
-        // Make sure this is NOT in the if (isNew ) { } block of code
-        NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-        [defaultCenter addObserver:self
-                          selector:@selector(updateFonts)
-                              name:UIContentSizeCategoryDidChangeNotification
-                            object:nil];
     }
     
     return self;
 }
+
 - (void)dealloc
 {
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter removeObserver:self];
 }
+
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [self.locationManager startUpdatingLocation];
+    
     UIScrollView *myScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     myScrollView.contentSize = CGSizeMake(800,2000);
     myScrollView.scrollEnabled = YES;
     self.vehicleArray = [[NSMutableArray alloc]init];
+    self.vehiclePicker.delegate = self;
+    self.vehiclePicker.dataSource = self;
+    self.vehiclePicker.showsSelectionIndicator = YES;
+    [self.vehiclePicker setTag:1];
     [self populateStaticVehicles:self.vehicleArray];
     
-    vehiclePicker.delegate = self;
-    vehiclePicker.dataSource = self;
-    vehiclePicker.showsSelectionIndicator = YES;
-    [vehiclePicker setTag:1];
-    [vehiclePicker reloadAllComponents];
+    self.soilArray = [[NSMutableArray alloc]init];
+    self.soilPicker.delegate=self;
+    self.soilPicker.dataSource=self;
+    self.soilPicker.showsSelectionIndicator= YES;
+    [self.soilPicker setTag:2];
+    [self populateStaticSoils:self.soilArray];
     
-    self.locationManager.delegate = self;
+    
+    [self.vehiclePicker reloadAllComponents];
+    [self.soilPicker reloadAllComponents];
+    
+    [self.locationManager startUpdatingLocation];
     self.location = [[CLLocation alloc] init];
-    
-    self.colorArray = @[@"Blue",@"Green",@"Orange",@"Purple",@"Red",@"Yellow"];
+        
+}
 
+- (void)save:(id)sender
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+}
+
+- (void)cancel:(id)sender
+{
+    // If the user cancelled, then remove the Item from the store
+    [[CalculationItemStore sharedStore] removeItem:self.calculation];
+    
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -119,7 +140,7 @@
 
 
 - (IBAction)calculateButton:(id)sender {
-    Calculation *calculation = self.calculation;
+    Calculation *calculation = _calculation;
     calculation.title = self.titleField.text;
     calculation.engineerName = self.engineerNameField.text;
     calculation.jobSite = self.jobsiteField.text;
@@ -129,8 +150,7 @@
     calculation.anchorHeight =self.heightAnchorSlider.value;
     calculation.bladeDepth = self.depthSlider.value;
     
-    //add vehicle to calculation
-    double doubleForce = [calculation forceValue];
+    double doubleForce = [calculation AnchorCapacity];
     double doublemoment = [calculation MomentCapacity];
                           
     self.forceLabel.text = [NSString stringWithFormat: @"%f", doubleForce];
@@ -163,45 +183,220 @@
 
 }
 
--(void)populateStaticVehicles:(NSMutableArray *)vehicleArray{
+// Question Mark Button Functions
+
+-(IBAction)haQuestion:(id)sender{
+    [self popupmaker :@"Anchor Height" :@"Ha is the vertical distance between the ground supporting the equipment and the anchor attachment point.The lower Ha is, the more stable the equipment anchor will be against overturning." ];
+    
+}
+
+-(IBAction)laQuestion:(id)sender{
+    
+    [self popupmaker:@"Anchor Setback" :@"La is the lateral distance between the point of rotation (i.e. the bottom of an embedded blade, the toe of the vehicle, etc.)and the point at which an anchor is attached."];
+    
+}
+
+-(IBAction)dbQuestion:(id)sender{
+    [self popupmaker:@"Blade Depth" :@"Db is the embedment depth of the equipment. This value is representative of the depth below the soil depending on the scenario."];
+}
+
+-(void)popupmaker:(NSString *)title :(NSString *)message{
+    UIAlertView * alert =[[UIAlertView alloc ] initWithTitle:title
+                                            message:message
+                                            delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil
+                          ];
+    [alert show];
+}
+
+-(void)populateStaticVehicles:(NSMutableArray *)vehicles{
+    Vehicle *none = [[Vehicle alloc]init];
+    none.vehicleType = @"none";
+    
     Vehicle *catD6 = [[Vehicle alloc]init];
     catD6.vehicleClass = @"Bulldozer";
     catD6.vehicleType = @"CAT D6";
+    catD6.vehicleWeight = 24494.0;
+    catD6.bladeWidth = 3.9;
+    catD6.centerOfGravity = 3.14;
+    catD6.centerofGravityHeight = 1.06;
+    catD6.trackLength = 2.87;
+    catD6.trackWidth = 0.55;
     
     Vehicle *catD7 = [[Vehicle alloc]init];
     catD7.vehicleClass = @"Bulldozer";
     catD7.vehicleType = @"CAT D7";
+    catD7.vehicleWeight = 18143.7;
+    catD7.bladeWidth = 3.9;
+    catD7.centerOfGravity = 3.14;
+    catD7.centerofGravityHeight = 1.15;
+    catD7.trackLength = 2.87;
+    catD7.trackWidth = 0.55;
     
     Vehicle *catD8 = [[Vehicle alloc]init];
     catD8.vehicleClass = @"Bulldozer";
     catD8.vehicleType = @"CAT D8";
+    catD8.vehicleWeight = 36287.39;
+    catD8.bladeWidth = 3.93;
+    catD8.centerOfGravity = 3.45;
+    catD8.centerofGravityHeight = 1.16;
+    catD8.trackLength = 3.2;
+    catD8.trackWidth = 0.55;
+    
     
     Vehicle *catD9 = [[Vehicle alloc]init];
     catD9.vehicleClass = @"Bulldozer";
-    catD9.vehicleType = @"CAT D9";
+    catD9.vehicleType = @"CAT 320- Drawbar Attachment ";
+    catD9.vehicleWeight = 21318.8;
+    catD9.bladeWidth = 0.91;
+    catD9.centerOfGravity = 6.7;
+    catD9.centerofGravityHeight = 1.25;
+    catD9.trackLength = 3.26;
+    catD9.trackWidth = 0.56;
     
+    Vehicle *catD10 = [[Vehicle alloc]init];
+    catD10.vehicleClass = @"Bulldozer";
+    catD10.vehicleType = @"CAT 320- Elbow Attachment ";
+    catD10.vehicleWeight = 21318.8;
+    catD10.bladeWidth = 0.91;
+    catD10.centerOfGravity = 6.7;
+    catD10.centerofGravityHeight = 1.25;
+    catD10.trackLength = 3.26;
+    catD10.trackWidth = 0.56;
+    
+    Vehicle *catD11 = [[Vehicle alloc]init];
+    catD11.vehicleClass = @"Bulldozer";
+    catD11.vehicleType = @"CAT 330- Drawbar Attachment ";
+    catD11.vehicleWeight = 35108;
+    catD11.bladeWidth = 0.91;
+    catD11.centerOfGravity = 6.7;
+    catD11.centerofGravityHeight = 1.25;
+    catD11.trackLength = 4.05;
+    catD11.trackWidth = 0.86;
+    
+    Vehicle *catD12 = [[Vehicle alloc]init];
+    catD12.vehicleClass = @"Bulldozer";
+    catD12.vehicleType = @"CAT 320- Elbow Attachment ";
+    catD12.vehicleWeight = 35108;
+    catD12.bladeWidth = 0.91;
+    catD12.centerOfGravity = 6.7;
+    catD12.centerofGravityHeight = 1.25;
+    catD12.trackLength = 4.05;
+    catD12.trackWidth = 0.86;
+    
+    [self.vehicleArray addObject:none];
     [self.vehicleArray addObject:catD6];
     [self.vehicleArray addObject:catD7];
     [self.vehicleArray addObject:catD8];
     [self.vehicleArray addObject:catD9];
+    [self.vehicleArray addObject:catD10];
+    [self.vehicleArray addObject:catD11];
+    [self.vehicleArray addObject:catD12];
     
+}
+
+-(void)populateStaticSoils:(NSMutableArray*)soilArray{
+    
+    Soil *none = [[Soil alloc]init];
+    none.soilType = @"none";
+    
+    Soil *uncLoose = [[Soil alloc]init];
+    uncLoose.soilType = @"Uncompacted Loose Silt/Soil/Gravel";
+    uncLoose.cohesion = 0;
+    uncLoose.frictionAngle = 25;
+    uncLoose.unitWeight =1522;
+    
+    Soil *lightcmpct = [[Soil alloc]init];
+    lightcmpct.soilType = @"Lightly Compacted Silt/Sand/Gravel";
+    lightcmpct.cohesion = 0;
+    lightcmpct.frictionAngle = 30;
+    lightcmpct.unitWeight = 1762;
+    
+    Soil *denseCmpct = [[Soil alloc]init];
+    denseCmpct.soilType = @"Dense Compacted Silt/Sand/Gravel";
+    denseCmpct.cohesion = 0;
+    denseCmpct.frictionAngle = 35;
+    denseCmpct.unitWeight = 2082;
+    
+    Soil *softClay = [[Soil alloc]init];
+    softClay.soilType = @"Soft Clay";
+    softClay.cohesion = 23.9;
+    softClay.frictionAngle = 0;
+    softClay.unitWeight = 1522;
+    
+    Soil *firmClay = [[Soil alloc]init];
+    firmClay.soilType = @"Firm Clay";
+    firmClay.cohesion = 47.88;
+    firmClay.frictionAngle =0;
+    firmClay.unitWeight = 1522;
+    
+    Soil *stiffClay = [[Soil alloc]init];
+    stiffClay.soilType = @"Stiff Clay";
+    stiffClay.cohesion = 95.76;
+    stiffClay.frictionAngle = 0;
+    stiffClay.unitWeight = 1522;
+    
+    Soil *hardClay = [[Soil alloc]init];
+    hardClay.soilType = @"Hard Clay";
+    hardClay.cohesion = 191.52;
+    hardClay.frictionAngle = 0;
+    hardClay.unitWeight = 1522;
+    
+    Soil *veryStiffClay = [[Soil alloc]init];
+    veryStiffClay.soilType = @"Very Stiff Clay";
+    veryStiffClay.cohesion = 143.64;
+    veryStiffClay.frictionAngle = 0;
+    stiffClay.unitWeight = 1522;
+    
+    
+    
+    [self.soilArray addObject:none];
+    [self.soilArray addObject:uncLoose];
+    [self.soilArray addObject:lightcmpct];
+    [self.soilArray addObject:denseCmpct];
+    [self.soilArray addObject:softClay];
+    [self.soilArray addObject:firmClay];
+    [self.soilArray addObject:stiffClay];
+    [self.soilArray addObject:hardClay];
+    [self.soilArray addObject:veryStiffClay];
 }
 #pragma pickerview
 
+// How many columns of components
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
 
+// How many rows are there in the UIPicker
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return vehicleArray.count;
+    if (pickerView.tag == 1) {
+        return self.vehicleArray.count;
+    }else{
+        return self.soilArray.count;
+    }
 }
 
+// Row title corresponds to Vehicle's Type
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    Vehicle *v =[vehicleArray objectAtIndex:row];
-    return v.vehicleType;
+    if (pickerView.tag == 1) {
+        NSLog(@"adding vehicle to spinner");
+        return ((Vehicle *) [self.vehicleArray objectAtIndex:row]).vehicleType;
+    }else{
+        NSLog(@"adding soil to spinner");
+        return ((Soil*) [self.soilArray objectAtIndex:row]).soilType;
+    }
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if (pickerView.tag == 1) {
+
+        _calculation.calcVehicle = [self.vehicleArray objectAtIndex:row];
+        NSLog(@"calculation assigned vehicle");
+    }else{
+        _calculation.calcSoil = [self.soilArray objectAtIndex:row];
+        NSLog(@"calculation assigned soil");
+    }
     
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {

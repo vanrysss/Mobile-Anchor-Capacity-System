@@ -8,17 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SoilCreatorViewController.h"
 
+@class CalculationDetailViewController;
 @class Calculation;
+@class Vehicle;
+@class Soil;
+
+
+@protocol CalculationDetailViewControllerDelegate <NSObject>
+
+-(void)CalculationDetailViewDidCancel:(CalculationDetailViewController *)controller;
+-(void)CalculationDetailView:(CalculationDetailViewController *)controller didFinishAddingItem:(Calculation *)item;
+
+@end
 
 @interface CalculationDetailViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate>{
     
     UIPickerView *vehiclePicker;
-    UIPickerView *soilPicker;
     NSMutableArray *vehicleArray;
+    UIPickerView *soilPicker;
     NSMutableArray *soilArray;
     
 }
+
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic,strong) Calculation *calculation;
@@ -49,13 +62,19 @@
 - (IBAction)betaValueChanged:(id)sender;
 - (IBAction)thetaValueChanged:(id)sender;
 
+-(IBAction)haQuestion:(id)sender;
+-(IBAction)laQuestion:(id)sender;
+-(IBAction)dbQuestion:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UILabel *forceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *momentLabel;
 @property (strong, nonatomic) NSMutableArray *vehicleArray;
 @property (strong, nonatomic) NSMutableArray *soilArray;
-@property (strong, nonatomic)          NSArray      *colorArray;
 
 
+@property (nonatomic,weak) id <CalculationDetailViewControllerDelegate> delegate;
 -(instancetype)initForNewItem:(BOOL)isNew;
 -(void)populateStaticVehicles:(NSMutableArray*)vehicles;
+-(void)populateStaticSoils:(NSMutableArray*)soils;
+-(void)popupmaker:(NSString *)title :(NSString *)message;
 @end
