@@ -24,11 +24,12 @@
 @end
 
 @interface CalculationDetailViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate>{
-    
+
     UIPickerView *vehiclePicker;
     NSMutableArray *vehicleArray;
     UIPickerView *soilPicker;
     NSMutableArray *soilArray;
+    IBOutlet UIScrollView *scroller;
     
 }
 
@@ -45,11 +46,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (retain, nonatomic) IBOutlet UIPickerView *vehiclePicker;
 @property (retain, nonatomic) IBOutlet UIPickerView *soilPicker;
-@property (weak, nonatomic) IBOutlet UISlider *betaSlider;
-@property (weak, nonatomic) IBOutlet UISlider *thetaSlider;
-@property (weak, nonatomic) IBOutlet UISlider *heightAnchorSlider;
-@property (weak, nonatomic) IBOutlet UISlider *setbackSlider;
-@property (weak, nonatomic) IBOutlet UISlider *depthSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *betaSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *thetaSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *heightAnchorSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *setbackSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *depthSlider;
 @property (weak, nonatomic) IBOutlet UILabel *betaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *thetaLabel;
 @property (weak, nonatomic) IBOutlet UILabel *haLabel;

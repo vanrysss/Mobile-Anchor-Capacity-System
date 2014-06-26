@@ -15,7 +15,6 @@
 
 
 @interface CalculationDetailViewController()
-@property (weak, nonatomic) IBOutlet UIScrollView *myScrollView;
 
 @end
 
@@ -52,13 +51,14 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
+    
+
+    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     
-    UIScrollView *myScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-    myScrollView.contentSize = CGSizeMake(800,2000);
-    myScrollView.scrollEnabled = YES;
+    
     self.vehicleArray = [[NSMutableArray alloc]init];
     self.vehiclePicker.delegate = self;
     self.vehiclePicker.dataSource = self;
@@ -98,8 +98,9 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
 
- 
     Calculation *calculation = self.calculation;
+    [scroller setScrollEnabled:YES];
+    [scroller setContentSize:CGSizeMake(320, 1323)];
     
     self.titleField.text = calculation.title;
     self.engineerNameField.text = calculation.engineerName;
@@ -144,17 +145,26 @@
     calculation.title = self.titleField.text;
     calculation.engineerName = self.engineerNameField.text;
     calculation.jobSite = self.jobsiteField.text;
-    calculation.beta = self.betaSlider.value;
-    calculation.theta =self.thetaSlider.value;
-    calculation.anchorSetback =self.setbackSlider.value;
-    calculation.anchorHeight =self.heightAnchorSlider.value;
-    calculation.bladeDepth = self.depthSlider.value;
+    calculation.beta = [self.betaLabel.text intValue];
+    calculation.theta =[self.thetaLabel.text intValue];
+    calculation.anchorSetback =[self.laLabel.text doubleValue];
+    calculation.anchorHeight =[self.haLabel.text doubleValue];
+    calculation.bladeDepth = [self.dbLabel.text doubleValue];
     
     double doubleForce = [calculation AnchorCapacity];
     double doublemoment = [calculation MomentCapacity];
-                          
-    self.forceLabel.text = [NSString stringWithFormat: @"%f", doubleForce];
-    self.momentLabel.text = [NSString stringWithFormat:@"%f", doublemoment];
+    
+    if (doubleForce < doublemoment) {
+        self.forceLabel.textColor = [UIColor redColor];
+        self.momentLabel.textColor = [UIColor blackColor];
+        
+    }else{
+        self.forceLabel.textColor = [UIColor blackColor];
+        self.momentLabel.textColor = [UIColor redColor];
+    }
+    
+    self.forceLabel.text = [NSString stringWithFormat: @"%.1f", doubleForce];
+    self.momentLabel.text = [NSString stringWithFormat:@"%.1f", doublemoment];
     
     
     
@@ -218,9 +228,9 @@
     catD6.vehicleClass = @"Bulldozer";
     catD6.vehicleType = @"CAT D6";
     catD6.vehicleWeight = 24494.0;
-    catD6.bladeWidth = 3.9;
-    catD6.centerOfGravity = 3.14;
-    catD6.centerofGravityHeight = 1.06;
+    catD6.bladeWidth = 3.35;
+    catD6.centerOfGravity = 2.65;
+    catD6.centerofGravityHeight = 1.07;
     catD6.trackLength = 2.87;
     catD6.trackWidth = 0.55;
     
@@ -230,7 +240,7 @@
     catD7.vehicleWeight = 18143.7;
     catD7.bladeWidth = 3.9;
     catD7.centerOfGravity = 3.14;
-    catD7.centerofGravityHeight = 1.15;
+    catD7.centerofGravityHeight = 1.16;
     catD7.trackLength = 2.87;
     catD7.trackWidth = 0.55;
     

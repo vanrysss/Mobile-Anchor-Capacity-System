@@ -18,17 +18,25 @@
 
 @implementation Calculation
 
+
 -(double)Alpha1{
-    _delta = (_calcSoil.frictionAngle) / 3;
     
-    double top = cos(degreesToRadians(_beta)) - tan(degreesToRadians(_delta)) * sin(degreesToRadians(_beta));
-    double bot = sin(degreesToRadians(_beta)) + tan(degreesToRadians(_delta)) * cos(degreesToRadians(_beta));
+    double rbeta= degreesToRadians(_beta);
+    double rdelta = degreesToRadians(_delta);
     
-    return sin(degreesToRadians(_beta)) + cos(degreesToRadians(_beta)) *(top/bot);
+       NSLog(@" rbeta %f", rbeta);
+       NSLog(@" rdelta %f", rdelta);
+
+    
+    
+    double top = cos(rbeta) - tan(rdelta) * sin(rbeta);
+    double bot = sin(rbeta) + tan(rdelta) * cos(rbeta);
+    
+    return (sin(rbeta) + cos(rbeta) * (top/bot));
 }
 
 -(double)Alpha2{
-    _delta = (_calcSoil.frictionAngle) / 3;
+    
     double top = cos(degreesToRadians(_beta)) - tan(degreesToRadians(_delta)) * sin(degreesToRadians(_beta));
     double bot = sin(degreesToRadians(_beta)) + tan(degreesToRadians(_delta)) * cos(degreesToRadians(_beta));
     
@@ -55,7 +63,7 @@
     double alph1 =[self Alpha1];
     double alph2 = [self Alpha2];
     
-    _Kp = pow(tan(45.0* _calcSoil.frictionAngle)/2.0, 2.0);
+    _Kp = pow(tan((45.0+ degreesToRadians(_calcSoil.frictionAngle)/2.0)), 2);
     if (_theta - _beta >= _delta) {
         _Kp=0;
     }else if (_theta - _beta >0){
@@ -63,17 +71,21 @@
     }
     
     double gamma = _calcSoil.unitWeight * KG_TO_KN;
+    double wb = _calcVehicle.bladeWidth;
     double nb = _Kp * alph1;
     double nc = 2 * sqrt(_Kp) * alph1;
     double nct = alph1 / alph2;
     double nw = 1/alph2;
     double wv = _calcVehicle.vehicleWeight * KG_TO_KN;
+    double trackArea = _calcVehicle.TrackArea;
     
-    double prelim = 0.5 * gamma * pow(_bladeDepth, 2) * _calcVehicle.bladeWidth * nb + (_calcSoil.cohesion * _calcVehicle.bladeWidth * nc) + (_calcSoil.cohesion * _calcVehicle.TrackArea * nct) + (wv * nw);
+    double prelim = 0.5 * gamma * pow(_bladeDepth, 2) * wb * nb + (_calcSoil.cohesion * wb * nc) + (_calcSoil.cohesion * trackArea * nct) + (wv * nw);
     
     self.forceValue = prelim * KN_TO_KG;
     
     //log for error checking
+    NSLog(@" Alph1 %f", alph1);
+    NSLog(@" Alph2 %f", alph2);
     NSLog(@" Kp %f", _Kp);
     NSLog(@" delta %f", _delta);
     NSLog(@" gamma %f", gamma);
@@ -90,9 +102,9 @@
 
 -(double)MomentCapacity{
     double wv = _calcVehicle.vehicleWeight * KG_TO_KN;
-    double top = (wv *(_calcVehicle.centerOfGravity * cos(_beta) - (_bladeDepth + _calcVehicle.centerofGravityHeight) * sin(_beta)) + [self Pp] * (_bladeDepth/3));
+    double top = (wv *(_calcVehicle.centerOfGravity * cos(degreesToRadians(_beta)) - (_bladeDepth + _calcVehicle.centerofGravityHeight) * sin(degreesToRadians(_beta))) + [self Pp] * (_bladeDepth/3));
     
-    double bot = cos(_theta - _beta) * (_bladeDepth + _anchorHeight) + sin(_theta - _beta) * _anchorSetback;
+    double bot = cos(degreesToRadians(_theta - _beta)) * (_bladeDepth + _anchorHeight) + sin(degreesToRadians(_theta - _beta)) * _anchorSetback;
     
     double prelim = (top/bot);
     self.momentValue= prelim * KN_TO_KG;

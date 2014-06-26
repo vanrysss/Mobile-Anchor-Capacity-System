@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */; };
-		2D0FE7601932FF36001CCCF0 /* CalculationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */; };
 		2D22460A192EA5F500865C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D224609192EA5F500865C2B /* Foundation.framework */; };
 		2D22460C192EA5F500865C2B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460B192EA5F500865C2B /* CoreGraphics.framework */; };
 		2D22460E192EA5F500865C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460D192EA5F500865C2B /* UIKit.framework */; };
@@ -24,8 +23,8 @@
 		2D22463F192EBFC600865C2B /* Soil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D22463E192EBFC600865C2B /* Soil.m */; };
 		2D224642192EC14000865C2B /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224641192EC14000865C2B /* Vehicle.m */; };
 		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
-		2D2F13EA195B955F00C248A5 /* MACSLoad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2F13E9195B955F00C248A5 /* MACSLoad.png */; };
-		2D2F13EC195B975F00C248A5 /* MACSLoad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D2F13EB195B975F00C248A5 /* MACSLoad@2x.png */; };
+		2D54F657195CBCCA005C9B76 /* moment_basic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D54F656195CBCCA005C9B76 /* moment_basic.png */; };
+		2D7AC800195B9B8E00755FEA /* CalculationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */; };
 		2DB1795F195A1FB100F7DDFD /* SoilCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */; };
 		2DB17960195A1FB100F7DDFD /* SoilCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1795E195A1FB100F7DDFD /* SoilCreatorViewController.xib */; };
 		2DC37EE519311E28001AC4DF /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC37EE419311E28001AC4DF /* HeaderView.xib */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationDetailViewController.h; sourceTree = "<group>"; };
 		2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationDetailViewController.m; sourceTree = "<group>"; };
-		2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationDetailViewController.xib; sourceTree = "<group>"; };
 		2D224606192EA5F500865C2B /* Mobile Anchor Capacity System.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Anchor Capacity System.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D224609192EA5F500865C2B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2D22460B192EA5F500865C2B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -69,8 +67,8 @@
 		2D224641192EC14000865C2B /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
 		2D224643192EC2E100865C2B /* Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculation.h; sourceTree = "<group>"; };
 		2D224644192EC2E100865C2B /* Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculation.m; sourceTree = "<group>"; };
-		2D2F13E9195B955F00C248A5 /* MACSLoad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MACSLoad.png; sourceTree = "<group>"; };
-		2D2F13EB195B975F00C248A5 /* MACSLoad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MACSLoad@2x.png"; sourceTree = "<group>"; };
+		2D54F656195CBCCA005C9B76 /* moment_basic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moment_basic.png; sourceTree = "<group>"; };
+		2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationDetailView.xib; sourceTree = "<group>"; };
 		2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoilCreatorViewController.h; sourceTree = "<group>"; };
 		2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoilCreatorViewController.m; sourceTree = "<group>"; };
 		2DB1795E195A1FB100F7DDFD /* SoilCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoilCreatorViewController.xib; sourceTree = "<group>"; };
@@ -155,12 +153,11 @@
 				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
 				2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */,
 				2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */,
-				2D0FE75E1932FF36001CCCF0 /* CalculationDetailViewController.xib */,
+				2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */,
 				2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */,
 				2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */,
 				2DB1795E195A1FB100F7DDFD /* SoilCreatorViewController.xib */,
-				2D2F13EB195B975F00C248A5 /* MACSLoad@2x.png */,
-				2D2F13E9195B955F00C248A5 /* MACSLoad.png */,
+				2D54F656195CBCCA005C9B76 /* moment_basic.png */,
 			);
 			path = "Mobile Anchor Capacity System";
 			sourceTree = "<group>";
@@ -269,13 +266,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D2F13EC195B975F00C248A5 /* MACSLoad@2x.png in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
-				2D0FE7601932FF36001CCCF0 /* CalculationDetailViewController.xib in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
 				2DB17960195A1FB100F7DDFD /* SoilCreatorViewController.xib in Resources */,
+				2D54F657195CBCCA005C9B76 /* moment_basic.png in Resources */,
 				2DC37EE519311E28001AC4DF /* HeaderView.xib in Resources */,
-				2D2F13EA195B955F00C248A5 /* MACSLoad.png in Resources */,
+				2D7AC800195B9B8E00755FEA /* CalculationDetailView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +375,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -411,7 +407,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -425,7 +421,7 @@
 				GCC_PREFIX_HEADER = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -439,7 +435,7 @@
 				GCC_PREFIX_HEADER = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Prefix.pch";
 				INFOPLIST_FILE = "Mobile Anchor Capacity System/Mobile Anchor Capacity System-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
