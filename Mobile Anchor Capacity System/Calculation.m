@@ -40,7 +40,7 @@
     double top = cos(degreesToRadians(_beta)) - tan(degreesToRadians(_delta)) * sin(degreesToRadians(_beta));
     double bot = sin(degreesToRadians(_beta)) + tan(degreesToRadians(_delta)) * cos(degreesToRadians(_beta));
     
-    return sin(degreesToRadians(_beta)) + sin(degreesToRadians(_theta)) *(top/bot);
+    return sin(degreesToRadians(_theta)) + sin(degreesToRadians(_theta)) *(top/bot);
 
 }
 

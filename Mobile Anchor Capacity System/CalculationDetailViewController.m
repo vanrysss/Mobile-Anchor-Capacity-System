@@ -13,8 +13,11 @@
 #import "SoilCreatorViewController.h"
 #import "CalculationItemStore.h"
 
+#define IMPERIAL_TO_METRIC 0.3048
+#define KG_TO_LBS 2.2
 
 @interface CalculationDetailViewController()
+
 
 @end
 
@@ -23,7 +26,7 @@
 - (instancetype)initForNewItem:(BOOL)isNew
 {
     self = [super initWithNibName:nil bundle:nil];
-    
+ 
     if (self) {
         if (isNew) {
             UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
@@ -147,14 +150,24 @@
     calculation.jobSite = self.jobsiteField.text;
     calculation.beta = [self.betaLabel.text intValue];
     calculation.theta =[self.thetaLabel.text intValue];
-    calculation.anchorSetback =[self.laLabel.text doubleValue];
-    calculation.anchorHeight =[self.haLabel.text doubleValue];
-    calculation.bladeDepth = [self.dbLabel.text doubleValue];
+    double doubleForce;
+    double doubleMoment;
     
-    double doubleForce = [calculation AnchorCapacity];
-    double doublemoment = [calculation MomentCapacity];
+    if ([self.unitSwitch isOn]) {
+        calculation.anchorSetback =[self.laLabel.text doubleValue] * IMPERIAL_TO_METRIC;
+        calculation.anchorHeight =[self.haLabel.text doubleValue ]* IMPERIAL_TO_METRIC;
+        calculation.bladeDepth = [self.dbLabel.text doubleValue]* IMPERIAL_TO_METRIC;
+        doubleForce = [calculation AnchorCapacity] * KG_TO_LBS;
+        doubleMoment = [calculation MomentCapacity] *KG_TO_LBS;
+    }else{
+        calculation.anchorSetback =[self.laLabel.text doubleValue];
+        calculation.anchorHeight =[self.haLabel.text doubleValue];
+        calculation.bladeDepth = [self.dbLabel.text doubleValue];
+    doubleForce = [calculation AnchorCapacity];
+    doubleMoment = [calculation MomentCapacity];
+    }
     
-    if (doubleForce < doublemoment) {
+    if (doubleForce < doubleMoment) {
         self.forceLabel.textColor = [UIColor redColor];
         self.momentLabel.textColor = [UIColor blackColor];
         
@@ -164,7 +177,7 @@
     }
     
     self.forceLabel.text = [NSString stringWithFormat: @"%.1f", doubleForce];
-    self.momentLabel.text = [NSString stringWithFormat:@"%.1f", doublemoment];
+    self.momentLabel.text = [NSString stringWithFormat:@"%.1f", doubleMoment];
     
     
     
@@ -176,6 +189,26 @@
 
 - (IBAction)thetaValueChanged:(id)sender {
     self.thetaLabel.text = [NSString stringWithFormat:@"%d" ,(int)self.thetaSlider.value];
+}
+
+- (IBAction)SwitchDidChange:(id)sender {
+    
+    if ([sender isOn]) {
+        
+        self.haUnitsLabel.text = @"Ft";
+        self.laUnitsLabel.text = @"Ft";
+        self.dbUnitsLabel.text = @"Ft";
+        
+        
+        //[_haUnitsLabel setNeedsDisplay];
+    }else{
+        self.haUnitsLabel.text = @"M";
+        self.laUnitsLabel.text = @"M";
+        self.dbUnitsLabel.text = @"M";
+        
+        //[_haUnitsLabel setNeedsDisplay];
+        
+    }
 }
 
 - (IBAction)haDidChange:(id)sender {
@@ -193,6 +226,7 @@
 
 }
 
+
 // Question Mark Button Functions
 
 -(IBAction)haQuestion:(id)sender{
@@ -208,6 +242,17 @@
 
 -(IBAction)dbQuestion:(id)sender{
     [self popupmaker:@"Blade Depth" :@"Db is the embedment depth of the equipment. This value is representative of the depth below the soil depending on the scenario."];
+}
+
+- (IBAction)thetaQuestion:(id)sender {
+    [self popupmaker:@"Theta" :@"Theta is the angle of the guyline from the horizontal plane."];
+}
+
+
+
+- (IBAction)betaQuestion:(id)sender {
+    [self popupmaker:@"Beta" :@"Beta is the angle of slope from the horizontal plane."];
+   
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{
@@ -371,7 +416,9 @@
     [self.soilArray addObject:hardClay];
     [self.soilArray addObject:veryStiffClay];
 }
-#pragma pickerview
+
+
+#pragma pickerview handlers
 
 // How many columns of components
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -416,5 +463,8 @@
     self.latitudeLabel.text = [NSString stringWithFormat:@"%f", self.location.coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%f", self.location.coordinate.longitude];
 }
+
+
+
 
 @end

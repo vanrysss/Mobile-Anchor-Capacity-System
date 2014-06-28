@@ -10,13 +10,16 @@
                 <outlet property="betaSlider" destination="k2c-UR-4JC" id="Lqn-gM-c1Z"/>
                 <outlet property="dateLabel" destination="nLP-Gy-TUc" id="SmE-xf-OZR"/>
                 <outlet property="dbLabel" destination="J8k-fU-gem" id="6y0-PD-uXa"/>
+                <outlet property="dbUnitsLabel" destination="z2u-ut-Hv7" id="CAw-9X-2PP"/>
                 <outlet property="depthSlider" destination="wll-eU-l1u" id="WKc-83-T8c"/>
                 <outlet property="engineerNameField" destination="nnu-fe-kzE" id="5Sp-fw-Tq3"/>
                 <outlet property="forceLabel" destination="3P3-Fo-ni4" id="5rx-CG-wZP"/>
                 <outlet property="haLabel" destination="ge6-Ct-xLW" id="ewC-8b-cfM"/>
+                <outlet property="haUnitsLabel" destination="cab-zc-rNF" id="fJG-Mg-Gto"/>
                 <outlet property="heightAnchorSlider" destination="Ubh-1i-NV1" id="qyx-L5-8ME"/>
                 <outlet property="jobsiteField" destination="5n3-NL-lbN" id="8dR-DX-WPG"/>
                 <outlet property="laLabel" destination="wax-bN-JXj" id="n9B-ha-UdK"/>
+                <outlet property="laUnitsLabel" destination="I2E-RL-1NW" id="sKD-jD-QsI"/>
                 <outlet property="latitudeLabel" destination="7wy-3h-r6C" id="h3T-65-7OY"/>
                 <outlet property="longitudeLabel" destination="GbZ-IJ-10t" id="WGZ-aR-kka"/>
                 <outlet property="momentLabel" destination="t0q-xt-WS4" id="drU-mg-xG0"/>
@@ -26,7 +29,7 @@
                 <outlet property="thetaLabel" destination="QLN-gI-GKr" id="or2-oF-NkO"/>
                 <outlet property="thetaSlider" destination="WXy-mJ-RYP" id="KeG-fo-x3c"/>
                 <outlet property="titleField" destination="ke1-Oa-f8e" id="0ls-yv-kjj"/>
-                <outlet property="unitsSelector" destination="TAa-Bu-Cy0" id="VHS-rS-EwN"/>
+                <outlet property="unitSwitch" destination="TAa-Bu-Cy0" id="kSV-fB-EJt"/>
                 <outlet property="vehiclePicker" destination="SG4-hy-vCw" id="Hwd-df-Sge"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vrE-dO-i4j"/>
             </connections>
@@ -91,6 +94,9 @@
                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="TAa-Bu-Cy0">
                             <rect key="frame" x="64" y="300" width="51" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="SwitchDidChange:" destination="-1" eventType="valueChanged" id="mWD-sW-IaI"/>
+                            </connections>
                         </switch>
                         <pickerView contentMode="scaleToFill" id="SG4-hy-vCw">
                             <rect key="frame" x="0.0" y="339" width="243" height="162"/>
@@ -119,28 +125,28 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="90" id="k2c-UR-4JC">
-                            <rect key="frame" x="86" y="917" width="94" height="29"/>
+                            <rect key="frame" x="57" y="917" width="94" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <connections>
                                 <action selector="betaValueChanged:" destination="-1" eventType="valueChanged" id="2Bd-Lx-9Iw"/>
                             </connections>
                         </stepper>
                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="90" id="WXy-mJ-RYP">
-                            <rect key="frame" x="86" y="954" width="94" height="29"/>
+                            <rect key="frame" x="57" y="954" width="94" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <connections>
                                 <action selector="thetaValueChanged:" destination="-1" eventType="valueChanged" id="2zR-An-Qh7"/>
                             </connections>
                         </stepper>
                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" stepValue="0.10000000000000001" id="Ubh-1i-NV1">
-                            <rect key="frame" x="86" y="991" width="94" height="29"/>
+                            <rect key="frame" x="57" y="991" width="94" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <connections>
                                 <action selector="haDidChange:" destination="-1" eventType="valueChanged" id="fCA-d7-W4E"/>
                             </connections>
                         </stepper>
                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" stepValue="0.10000000000000001" id="Eep-Gv-pBt">
-                            <rect key="frame" x="86" y="1028" width="94" height="29"/>
+                            <rect key="frame" x="57" y="1028" width="94" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <connections>
                                 <action selector="ladidChange:" destination="-1" eventType="valueChanged" id="icY-Pm-w6H"/>
@@ -153,7 +159,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="5" stepValue="0.10000000000000001" id="wll-eU-l1u">
-                            <rect key="frame" x="86" y="1070" width="94" height="29"/>
+                            <rect key="frame" x="57" y="1070" width="94" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                             <connections>
                                 <action selector="dbDidChange:" destination="-1" eventType="valueChanged" id="Qfl-98-wSA"/>
@@ -230,7 +236,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="IGx-Rf-oIn">
-                            <rect key="frame" x="273" y="986" width="30" height="30"/>
+                            <rect key="frame" x="273" y="990" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="?">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -272,23 +278,60 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5vi-GT-fmg">
-                            <rect key="frame" x="273" y="954" width="30" height="30"/>
+                            <rect key="frame" x="273" y="953" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="?">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="thetaQuestion:" destination="-1" eventType="touchUpInside" id="kKy-PC-DzG"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dB4-T2-8Sf">
-                            <rect key="frame" x="273" y="917" width="30" height="30"/>
+                            <rect key="frame" x="273" y="916" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="?">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="betaQuestion:" destination="-1" eventType="touchUpInside" id="5uc-eS-prX"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moment_basic.png" id="Z11-wd-Xq7">
                             <rect key="frame" x="17" y="660" width="286" height="217"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DhQ-0E-fHb">
+                            <rect key="frame" x="159" y="925" width="7" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lg2-Ys-hZN">
+                            <rect key="frame" x="159" y="958" width="7" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cab-zc-rNF">
+                            <rect key="frame" x="159" y="995" width="15" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I2E-RL-1NW">
+                            <rect key="frame" x="159" y="1032" width="15" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z2u-ut-Hv7">
+                            <rect key="frame" x="159" y="1073" width="15" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <connections>
                         <outlet property="delegate" destination="-1" id="UyM-bX-f7W"/>

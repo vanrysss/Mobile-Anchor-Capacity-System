@@ -12,6 +12,8 @@
 #import "CalculationDetailViewController.h"
 
 @interface ItemsViewController()
+@property UISegmentedControl *segment;
+
 @end
 
 @implementation ItemsViewController
@@ -21,6 +23,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+        
         UINavigationItem *navItem = self.navigationItem;
         navItem.title = @"MACS";
         
@@ -30,10 +33,12 @@
                                                                              target:self
                                                                              action:@selector(addNewItem:)];
         
+       
         // Set this bar button item as the right item in the navigationItem
         navItem.rightBarButtonItem = bbi;
         
         navItem.leftBarButtonItem = self.editButtonItem;
+        
     }
     return self;
 }
@@ -45,8 +50,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
+    self.segment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Publication", @"About", nil]];
+    self.tableView.tableHeaderView = _segment;
+    [_segment addTarget:self action:@selector(segmentPressed:) forControlEvents:UIControlEventValueChanged];
+
+
     [self.tableView registerClass:[UITableViewCell class]
            forCellReuseIdentifier:@"UITableViewCell"];
 }
@@ -116,6 +124,26 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [[CalculationItemStore sharedStore] moveItemAtIndex:sourceIndexPath.row
                                         toIndex:destinationIndexPath.row];
+}
+
+- (void)segmentPressed:(id)sender {
+    
+    if (_segment.selectedSegmentIndex ==0) {
+
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://ferm.forestry.oregonstate.edu/facstaff/leshchinsky-ben"]];
+        
+    }else if(_segment.selectedSegmentIndex ==1){
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, 320, 480)];
+        imageView.backgroundColor = [UIColor redColor];
+        [imageView setImage: [UIImage imageNamed:@"MACSLoad@2x.png"]];
+        [self.view addSubview: imageView];
+        sleep(5);
+        imageView.hidden = YES;
+        
+    }
+
+
 }
 
 - (IBAction)addNewItem:(id)sender

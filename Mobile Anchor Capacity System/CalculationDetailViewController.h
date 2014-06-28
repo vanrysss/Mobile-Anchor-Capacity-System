@@ -31,8 +31,10 @@
     NSMutableArray *soilArray;
     IBOutlet UIScrollView *scroller;
     
+    
 }
 
+@property (weak, nonatomic) IBOutlet UISwitch *unitSwitch;
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic,strong) Calculation *calculation;
@@ -40,7 +42,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleField;
 @property (weak, nonatomic) IBOutlet UITextField *engineerNameField;
 @property (weak, nonatomic) IBOutlet UITextField *jobsiteField;
-@property (weak, nonatomic) IBOutlet UISwitch *unitsSelector;
 @property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -56,6 +57,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *haLabel;
 @property (weak, nonatomic) IBOutlet UILabel *laLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dbLabel;
+@property (weak, nonatomic) IBOutlet UILabel *haUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *laUnitsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dbUnitsLabel;
+
+
+- (IBAction)SwitchDidChange:(id)sender;
+
 - (IBAction)haDidChange:(id)sender;
 - (IBAction)ladidChange:(id)sender;
 - (IBAction)dbDidChange:(id)sender;
@@ -66,6 +74,9 @@
 -(IBAction)haQuestion:(id)sender;
 -(IBAction)laQuestion:(id)sender;
 -(IBAction)dbQuestion:(id)sender;
+-(IBAction)thetaQuestion:(id)sender;
+- (IBAction)betaQuestion:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *forceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *momentLabel;

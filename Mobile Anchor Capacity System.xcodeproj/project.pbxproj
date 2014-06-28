@@ -24,6 +24,7 @@
 		2D224642192EC14000865C2B /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224641192EC14000865C2B /* Vehicle.m */; };
 		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
 		2D54F657195CBCCA005C9B76 /* moment_basic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D54F656195CBCCA005C9B76 /* moment_basic.png */; };
+		2D54F669195CE3FF005C9B76 /* MACSLoad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */; };
 		2D7AC800195B9B8E00755FEA /* CalculationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */; };
 		2DB1795F195A1FB100F7DDFD /* SoilCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */; };
 		2DB17960195A1FB100F7DDFD /* SoilCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB1795E195A1FB100F7DDFD /* SoilCreatorViewController.xib */; };
@@ -68,6 +69,7 @@
 		2D224643192EC2E100865C2B /* Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculation.h; sourceTree = "<group>"; };
 		2D224644192EC2E100865C2B /* Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculation.m; sourceTree = "<group>"; };
 		2D54F656195CBCCA005C9B76 /* moment_basic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moment_basic.png; sourceTree = "<group>"; };
+		2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MACSLoad@2x.png"; sourceTree = "<group>"; };
 		2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationDetailView.xib; sourceTree = "<group>"; };
 		2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoilCreatorViewController.h; sourceTree = "<group>"; };
 		2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoilCreatorViewController.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */,
 				2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */,
 				2DB1795E195A1FB100F7DDFD /* SoilCreatorViewController.xib */,
+				2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */,
 				2D54F656195CBCCA005C9B76 /* moment_basic.png */,
 			);
 			path = "Mobile Anchor Capacity System";
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D54F669195CE3FF005C9B76 /* MACSLoad@2x.png in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
 				2DB17960195A1FB100F7DDFD /* SoilCreatorViewController.xib in Resources */,
