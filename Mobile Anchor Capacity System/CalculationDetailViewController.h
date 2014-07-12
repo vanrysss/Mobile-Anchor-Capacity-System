@@ -63,6 +63,7 @@
 
 
 - (IBAction)SwitchDidChange:(id)sender;
+- (IBAction)LaunchSoilView:(id)sender;
 
 - (IBAction)haDidChange:(id)sender;
 - (IBAction)ladidChange:(id)sender;

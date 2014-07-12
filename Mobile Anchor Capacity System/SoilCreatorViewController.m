@@ -53,12 +53,18 @@
     [self popupmaker :@"Soil Cohesion": @"Cohesion defines the non-stress dependent shear strength of soil and should be used with caution. Typically,cohesion occurs in stiff, over-consolidated clays or cemented native soils. Cohesion should be neglected if the designer is unsure of its presence."];
 }
 
-- (IBAction)frictionAngleSlider:(id)sender {
-    
-}
-- (IBAction)cohesionSlider:(id)sender {
-}
 
+
+- (IBAction)UnitSwitch:(id)sender {
+    
+    if ([sender isOn]) {
+        self.unitWeightUnits.text = @"LBS/cubic Ft.";
+        self.cohesionUnits.text = @"imp";
+    }else{
+        self.unitWeightUnits.text = @"KG/m3";
+        self.cohesionUnits.text = @"met";
+    }
+}
 
 - (IBAction)cancelButton:(id)sender {
 }

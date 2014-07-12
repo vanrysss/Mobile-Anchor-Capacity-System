@@ -17,16 +17,20 @@
 @end
 
 @interface SoilCreatorViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UISlider *soilUnitWeightSlider;
-@property (weak, nonatomic) IBOutlet UISlider *soilFrictionAngleSlider;
-@property (weak, nonatomic) IBOutlet UISlider *soilCohesionSlider;
+
 - (IBAction)unitWeightQuestion:(id)sender;
 - (IBAction)frictionAngleQuestion:(id)sender;
 - (IBAction)cohesionQuestion:(id)sender;
+@property (weak, nonatomic) IBOutlet UIStepper *frictionAngleStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *unitWeightStepper;
+@property (weak, nonatomic) IBOutlet UIStepper *cohesionStepper;
+@property (weak, nonatomic) IBOutlet UILabel *unitWeightValue;
+@property (weak, nonatomic) IBOutlet UILabel *frictionAngleValue;
+@property (weak, nonatomic) IBOutlet UILabel *cohesionValue;
+@property (weak, nonatomic) IBOutlet UILabel *unitWeightUnits;
+@property (weak, nonatomic) IBOutlet UILabel *cohesionUnits;
 
-@property (weak, nonatomic) IBOutlet UISlider *unitweightSlider;
-@property (weak, nonatomic) IBOutlet UISlider *frictionAngleSlider;
-@property (weak, nonatomic) IBOutlet UISlider *cohesionSlider;
+- (IBAction)UnitSwitch:(id)sender;
 
 - (IBAction)cancelButton:(id)sender;
 - (IBAction)saveButton:(id)sender;

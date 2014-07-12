@@ -17,7 +17,7 @@
 #define KG_TO_LBS 2.2
 
 @interface CalculationDetailViewController()
-
+-(IBAction)LaunchSoilView:(id)sender;
 
 @end
 
@@ -200,15 +200,19 @@
         self.dbUnitsLabel.text = @"Ft";
         
         
-        //[_haUnitsLabel setNeedsDisplay];
     }else{
         self.haUnitsLabel.text = @"M";
         self.laUnitsLabel.text = @"M";
         self.dbUnitsLabel.text = @"M";
-        
-        //[_haUnitsLabel setNeedsDisplay];
-        
+                
     }
+}
+
+- (IBAction)LaunchSoilView:(id)sender {
+    
+    SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorViewController" bundle:NULL];
+    
+    [self presentViewController:newSoilView animated:YES completion:nil];
 }
 
 - (IBAction)haDidChange:(id)sender {
