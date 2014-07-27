@@ -18,9 +18,9 @@
 
 @interface SoilCreatorViewController : UIViewController
 
-- (IBAction)unitWeightQuestion:(id)sender;
-- (IBAction)frictionAngleQuestion:(id)sender;
-- (IBAction)cohesionQuestion:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *soilNameField;
+@property (weak, nonatomic) IBOutlet UISwitch *soilUnitsSwitch;
+
 @property (weak, nonatomic) IBOutlet UIStepper *frictionAngleStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *unitWeightStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *cohesionStepper;
@@ -30,7 +30,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *unitWeightUnits;
 @property (weak, nonatomic) IBOutlet UILabel *cohesionUnits;
 
-- (IBAction)UnitSwitch:(id)sender;
+- (IBAction)soilQuestions:(id)sender;
+- (IBAction)SwitchDidChange:(id)sender;
+
 
 - (IBAction)cancelButton:(id)sender;
 - (IBAction)saveButton:(id)sender;

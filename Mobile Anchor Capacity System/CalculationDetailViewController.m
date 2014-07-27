@@ -18,6 +18,7 @@
 
 @interface CalculationDetailViewController()
 -(IBAction)LaunchSoilView:(id)sender;
+-(IBAction)LaunchVehicleView:(id)sender;
 
 @end
 
@@ -210,7 +211,7 @@
 
 - (IBAction)LaunchSoilView:(id)sender {
     
-    SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorViewController" bundle:NULL];
+    SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorView" bundle:NULL];
     
     [self presentViewController:newSoilView animated:YES completion:nil];
 }
