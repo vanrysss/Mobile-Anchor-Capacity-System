@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SoilCreatorViewController.h"
+#import "VehicleCreatorViewController.h"
 
 @class CalculationDetailViewController;
 @class Calculation;

@@ -25,6 +25,8 @@
 		2D224645192EC2E100865C2B /* Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D224644192EC2E100865C2B /* Calculation.m */; };
 		2D54F657195CBCCA005C9B76 /* moment_basic.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D54F656195CBCCA005C9B76 /* moment_basic.png */; };
 		2D54F669195CE3FF005C9B76 /* MACSLoad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */; };
+		2D5592A919874A3500975C9D /* VehicleCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5592A719874A3500975C9D /* VehicleCreatorViewController.m */; };
+		2D5592AA19874A3500975C9D /* VehicleCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D5592A819874A3500975C9D /* VehicleCreatorViewController.xib */; };
 		2D7AC800195B9B8E00755FEA /* CalculationDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */; };
 		2DB02AD11971FEDC0011B577 /* SoilCreatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */; };
 		2DB1795F195A1FB100F7DDFD /* SoilCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */; };
@@ -70,6 +72,9 @@
 		2D224644192EC2E100865C2B /* Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculation.m; sourceTree = "<group>"; };
 		2D54F656195CBCCA005C9B76 /* moment_basic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moment_basic.png; sourceTree = "<group>"; };
 		2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MACSLoad@2x.png"; sourceTree = "<group>"; };
+		2D5592A619874A3500975C9D /* VehicleCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleCreatorViewController.h; sourceTree = "<group>"; };
+		2D5592A719874A3500975C9D /* VehicleCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleCreatorViewController.m; sourceTree = "<group>"; };
+		2D5592A819874A3500975C9D /* VehicleCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehicleCreatorViewController.xib; sourceTree = "<group>"; };
 		2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalculationDetailView.xib; sourceTree = "<group>"; };
 		2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SoilCreatorView.xib; path = ../SoilCreatorView.xib; sourceTree = "<group>"; };
 		2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoilCreatorViewController.h; sourceTree = "<group>"; };
@@ -158,6 +163,9 @@
 				2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */,
 				2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */,
 				2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */,
+				2D5592A619874A3500975C9D /* VehicleCreatorViewController.h */,
+				2D5592A719874A3500975C9D /* VehicleCreatorViewController.m */,
+				2D5592A819874A3500975C9D /* VehicleCreatorViewController.xib */,
 				2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */,
 				2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */,
 				2D54F656195CBCCA005C9B76 /* moment_basic.png */,
@@ -269,6 +277,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5592AA19874A3500975C9D /* VehicleCreatorViewController.xib in Resources */,
 				2D54F669195CE3FF005C9B76 /* MACSLoad@2x.png in Resources */,
 				2D224614192EA5F500865C2B /* InfoPlist.strings in Resources */,
 				2D22461C192EA5F500865C2B /* Images.xcassets in Resources */,
@@ -302,6 +311,7 @@
 				2D224616192EA5F500865C2B /* main.m in Sources */,
 				2D224642192EC14000865C2B /* Vehicle.m in Sources */,
 				2DB1795F195A1FB100F7DDFD /* SoilCreatorViewController.m in Sources */,
+				2D5592A919874A3500975C9D /* VehicleCreatorViewController.m in Sources */,
 				2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,9 +7,6 @@
 //
 
 #import "SoilCreatorViewController.h"
-#import "CalculationDetailViewController.h"
-#import "Soil.h"
-
 
 #define IMPERIAL_TO_METRIC 0.3048
 #define KG_TO_LBS 2.2
@@ -19,6 +16,9 @@
 @end
 
 @implementation SoilCreatorViewController
+
+Soil *soil;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -82,7 +82,6 @@
 
 - (IBAction)saveButton:(id)sender {
     
-    Soil *soil;
     soil.soilType = self.soilNameField.text;
     soil.frictionAngle = [self.frictionAngleValue.text integerValue];
     

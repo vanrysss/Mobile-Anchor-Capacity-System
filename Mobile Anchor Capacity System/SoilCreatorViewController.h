@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CalculationDetailViewController.h"
+#import "SoilCreatorViewController.h"
+#import "CalculationDetailViewController.h"
+#import "Soil.h"
 
 @class SoilCreatorViewController;
 @protocol SoilCreatorDelegate <NSObject>
