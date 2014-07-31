@@ -5,25 +5,28 @@
 //  Created by Sam Van Ryssegem on 6/24/14.
 //  Copyright (c) 2014 VanR. All rights reserved.
 //
-
-#import <UIKit/UIKit.h>
-#import "CalculationDetailViewController.h"
-#import "SoilCreatorViewController.h"
-#import "CalculationDetailViewController.h"
 #import "Soil.h"
 
 @class SoilCreatorViewController;
-@protocol SoilCreatorDelegate <NSObject>
 
--(void)addItemViewController:(SoilCreatorViewController *)controller didFinishItem:(NSString *)item;
+@protocol SoilCreatorViewDelegate <NSObject>
+-(void)addItemViewController:(SoilCreatorViewController *)controller didFinishItem:(Soil *)item;
 
+@property (nonatomic, weak) id <SoilCreatorViewDelegate> delegate;
 @end
+#import <UIKit/UIKit.h>
+#import "CalculationDetailViewController.h"
+
+
+
+
 
 @interface SoilCreatorViewController : UIViewController
 
+@property (nonatomic,weak) id<SoilCreatorViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *soilNameField;
 @property (weak, nonatomic) IBOutlet UISwitch *soilUnitsSwitch;
-
+@property (nonatomic) Soil* soil;
 @property (weak, nonatomic) IBOutlet UIStepper *frictionAngleStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *unitWeightStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *cohesionStepper;
@@ -39,8 +42,6 @@
 
 - (IBAction)cancelButton:(id)sender;
 - (IBAction)saveButton:(id)sender;
-
-@property (nonatomic,weak) id <SoilCreatorDelegate> delegate;
 -(void)popupmaker:(NSString *)title :(NSString *)message;
 
 @end

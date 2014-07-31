@@ -81,16 +81,42 @@
 }
 
 - (IBAction)saveVehicle:(id)sender {
-    _thisVehicle.vehicleClass = _vehicleClassField.text;
-    _thisVehicle.vehicleType = _vehicleTypeField.text;
-    _thisVehicle.vehicleWeight = [_vehicleWeightLabel.text doubleValue];
-    _thisVehicle.trackLength = [_trackLengthLabel.text doubleValue];
-    _thisVehicle.trackWidth = [_trackWidthLabel.text doubleValue];
-    _thisVehicle.bladeWidth = [_bladeWidthLabel.text doubleValue];
-    _thisVehicle.centerofGravityHeight = [_vehicleHeightLabel.text doubleValue];
-    _thisVehicle.centerOfGravity = [_vehicleCenterOfGravityOffsetLabel.text doubleValue];
+    _vehicle.vehicleClass = _vehicleClassField.text;
+    _vehicle.vehicleType = _vehicleTypeField.text;
+    _vehicle.vehicleWeight = [_vehicleWeightLabel.text doubleValue];
+    _vehicle.trackLength = [_trackLengthLabel.text doubleValue];
+    _vehicle.trackWidth = [_trackWidthLabel.text doubleValue];
+    _vehicle.bladeWidth = [_bladeWidthLabel.text doubleValue];
+    _vehicle.centerofGravityHeight = [_vehicleHeightLabel.text doubleValue];
+    _vehicle.centerOfGravity = [_vehicleCenterOfGravityOffsetLabel.text doubleValue];
     
+    [self.delegate addItemViewController:self didFinishItem:_vehicle];
+
+}
+
+- (IBAction)hgDidChange:(id)sender {
+    self.vehicleHeightLabel.text =[NSString stringWithFormat:@"%.1f" ,(double)self.hgSlider.value];
+}
+
+- (IBAction)cgDidChange:(id)sender {
+    self.vehicleCenterOfGravityOffsetLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.cgSlider.value];
     
+}
+
+- (IBAction)tlDidChange:(id)sender {
+    self.trackLengthLabel.text =[NSString stringWithFormat:@"%.1f", (double)self.tlSlider.value];
+}
+
+- (IBAction)twDidChange:(id)sender {
+    self.trackWidthLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.twSlider.value];
+}
+
+- (IBAction)wbDidChange:(id)sender {
+    self.bladeWidthLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.twSlider.value];
+}
+
+- (IBAction)wvDidSet:(id)sender {
+    self.vehicleWeightLabel.text = [NSString stringWithFormat:@"%@", self.vehicleWeightField.text];
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{

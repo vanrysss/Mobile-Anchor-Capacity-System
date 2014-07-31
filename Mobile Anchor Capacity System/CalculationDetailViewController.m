@@ -7,14 +7,16 @@
 //
 
 #import "CalculationDetailViewController.h"
-#import "Calculation.h"
-#import "Vehicle.h"
-#import "Soil.h"
 #import "SoilCreatorViewController.h"
+#import "VehicleCreatorViewController.h"
 #import "CalculationItemStore.h"
+#import "Calculation.h"
+#import "Soil.h"
+#import "Vehicle.h"
 
 #define IMPERIAL_TO_METRIC 0.3048
 #define KG_TO_LBS 2.2
+
 
 @interface CalculationDetailViewController()
 -(IBAction)LaunchSoilView:(id)sender;
@@ -212,8 +214,23 @@
 - (IBAction)LaunchSoilView:(id)sender {
     
     SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorView" bundle:NULL];
-    
     [self presentViewController:newSoilView animated:YES completion:nil];
+}
+
+- (void)addItemViewController:(SoilCreatorViewController *)controller didFinishEnteringItem:(Soil *)item{
+    
+    [self.soilArray addObject:item];
+}
+
+- (IBAction)LaunchVehicleView:(id)sender {
+    
+    VehicleCreatorViewController *newVehicleView = [[VehicleCreatorViewController alloc]initWithNibName:@"VehicleCreatorViewController" bundle:NULL];
+    
+    [self presentViewController:newVehicleView animated:YES completion:nil];
+}
+
+-(void)addItemViewController:(VehicleCreatorViewController *)controller didFinishItem:(Vehicle *)item{
+    [self.vehicleArray addObject:item];
 }
 
 - (IBAction)haDidChange:(id)sender {

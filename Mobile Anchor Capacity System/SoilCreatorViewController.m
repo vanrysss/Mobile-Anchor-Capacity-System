@@ -17,12 +17,11 @@
 
 @implementation SoilCreatorViewController
 
-Soil *soil;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
     }
@@ -82,17 +81,18 @@ Soil *soil;
 
 - (IBAction)saveButton:(id)sender {
     
-    soil.soilType = self.soilNameField.text;
-    soil.frictionAngle = [self.frictionAngleValue.text integerValue];
+    _soil.soilType = self.soilNameField.text;
+    _soil.frictionAngle = [self.frictionAngleValue.text integerValue];
     
     if ([self.soilUnitsSwitch isOn] ) {
-        soil.cohesion = [self.cohesionValue.text doubleValue];
-        soil.unitWeight = [self.unitWeightValue.text doubleValue];
+        _soil.cohesion = [self.cohesionValue.text doubleValue];
+        _soil.unitWeight = [self.unitWeightValue.text doubleValue];
     }else{
-        soil.cohesion = [self.cohesionValue.text doubleValue];
-        soil.unitWeight = [self.unitWeightValue.text doubleValue];
+        _soil.cohesion = [self.cohesionValue.text doubleValue];
+        _soil.unitWeight = [self.unitWeightValue.text doubleValue];
     }
-    
+    [self.delegate addItemViewController:self didFinishItem:_soil];
+
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{

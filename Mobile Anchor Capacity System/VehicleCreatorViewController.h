@@ -8,13 +8,26 @@
 
 #import <UIKit/UIKit.h>
 #import "Vehicle.h"
-@class Vehicle;
+@class VehicleCreatorViewController;
+@protocol VehicleCreatorViewDelegate <NSObject>
+-(void)addItemViewController:(VehicleCreatorViewController *)controller didFinishItem:(Vehicle *)item;
+
+@property (nonatomic, weak) id <VehicleCreatorViewDelegate> delegate;
+@end
 
 @interface VehicleCreatorViewController : UIViewController
 
+@property (weak,nonatomic) id <VehicleCreatorViewDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UITextField *vehicleWeightField;
+@property (weak, nonatomic) IBOutlet UIStepper *hgSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *cgSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *tlSlider;
+@property (weak, nonatomic) IBOutlet UIStepper *twSlider;
+
+@property (weak, nonatomic) IBOutlet UIStepper *wbSlider;
 @property (weak, nonatomic) IBOutlet UITextField *vehicleTypeField;
 @property (weak, nonatomic) IBOutlet UITextField *vehicleClassField;
-@property(weak,nonatomic) Vehicle* thisVehicle;
+@property(weak,nonatomic) Vehicle* vehicle;
 @property (weak, nonatomic) IBOutlet UILabel *vehicleHeightLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vehicleCenterOfGravityOffsetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vehicleWeightLabel;
@@ -36,6 +49,15 @@
 - (IBAction)twQuestion:(id)sender;
 - (IBAction)wbQuestion:(id)sender;
 - (IBAction)saveVehicle:(id)sender;
+
+- (IBAction)hgDidChange:(id)sender;
+- (IBAction)cgDidChange:(id)sender;
+- (IBAction)tlDidChange:(id)sender;
+- (IBAction)twDidChange:(id)sender;
+- (IBAction)wbDidChange:(id)sender;
+- (IBAction)wvDidSet:(id)sender;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *cancelCreationofVehicle;
 
 

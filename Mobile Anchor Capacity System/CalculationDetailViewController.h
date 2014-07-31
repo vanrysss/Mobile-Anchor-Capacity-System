@@ -6,16 +6,17 @@
 //  Copyright (c) 2014 VanR. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import "SoilCreatorViewController.h"
-#import "VehicleCreatorViewController.h"
 
 @class CalculationDetailViewController;
-@class Calculation;
-@class Vehicle;
-@class Soil;
 
+
+#import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Soil.h"
+#import "Vehicle.h"
+#import "Calculation.h"
+#import "SoilCreatorViewController.h"
+#import "VehicleCreatorViewController.h"
 
 @protocol CalculationDetailViewControllerDelegate <NSObject>
 
@@ -24,16 +25,18 @@
 
 @end
 
-@interface CalculationDetailViewController : UIViewController<UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate>{
+@interface CalculationDetailViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate,SoilCreatorViewDelegate,VehicleCreatorViewDelegate>{
 
     UIPickerView *vehiclePicker;
     NSMutableArray *vehicleArray;
     UIPickerView *soilPicker;
     NSMutableArray *soilArray;
     IBOutlet UIScrollView *scroller;
-    
+    Soil *soil;
     
 }
+
+
 
 @property (weak, nonatomic) IBOutlet UISwitch *unitSwitch;
 @property (strong, nonatomic) CLLocation *location;
@@ -65,6 +68,7 @@
 
 - (IBAction)SwitchDidChange:(id)sender;
 - (IBAction)LaunchSoilView:(id)sender;
+- (IBAction)LaunchVehicleView:(id)sender;
 
 - (IBAction)haDidChange:(id)sender;
 - (IBAction)ladidChange:(id)sender;
