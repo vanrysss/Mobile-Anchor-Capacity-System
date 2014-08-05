@@ -63,6 +63,26 @@
         }
     }
 
+- (IBAction)unitWtDidChange:(id)sender {
+    self.unitWeightValue.text = [NSString stringWithFormat:@"%.1f", (double)self.unitWeightStepper.value];
+
+}
+
+- (IBAction)frictionAngleDidChange:(id)sender {
+    self.frictionAngleValue.text = [NSString stringWithFormat:@"%d", (int)self.frictionAngleStepper.value];
+
+}
+
+- (IBAction)cohesionDidChange:(id)sender {
+    self.cohesionValue.text = [NSString stringWithFormat:@"%.1f", (double)self.cohesionStepper.value];
+
+}
+
+- (IBAction)textFieldDismiss:(id)sender {
+    
+    [[self view] endEditing:YES];
+}
+
 
 - (IBAction)UnitSwitch:(id)sender {
     
@@ -76,23 +96,28 @@
 }
 
 - (IBAction)cancelButton:(id)sender {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)saveButton:(id)sender {
     
-    _soil.soilType = self.soilNameField.text;
-    _soil.frictionAngle = [self.frictionAngleValue.text integerValue];
+    self.thisSoil = [[Soil alloc] init];
+    
+    _thisSoil.soilType = self.soilNameField.text;
+    NSLog(@"soil  type field %@", self.soilNameField.text);
+    NSLog(@"soil type: %@", _thisSoil.soilType);
+
+    _thisSoil.frictionAngle = [self.frictionAngleValue.text integerValue];
     
     if ([self.soilUnitsSwitch isOn] ) {
-        _soil.cohesion = [self.cohesionValue.text doubleValue];
-        _soil.unitWeight = [self.unitWeightValue.text doubleValue];
+        _thisSoil.cohesion = [self.cohesionValue.text doubleValue];
+        _thisSoil.unitWeight = [self.unitWeightValue.text doubleValue];
     }else{
-        _soil.cohesion = [self.cohesionValue.text doubleValue];
-        _soil.unitWeight = [self.unitWeightValue.text doubleValue];
+        _thisSoil.cohesion = [self.cohesionValue.text doubleValue];
+        _thisSoil.unitWeight = [self.unitWeightValue.text doubleValue];
     }
-    [self.delegate addItemViewController:self didFinishItem:_soil];
-
+    [self.delegate SoilCreatorViewController:self didFinishItem:_thisSoil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{

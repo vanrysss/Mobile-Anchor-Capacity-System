@@ -10,10 +10,11 @@
 @class SoilCreatorViewController;
 
 @protocol SoilCreatorViewDelegate <NSObject>
--(void)addItemViewController:(SoilCreatorViewController *)controller didFinishItem:(Soil *)item;
+-(void)SoilCreatorViewController:(SoilCreatorViewController *)controller didFinishItem:(Soil *)item;
 
 @property (nonatomic, weak) id <SoilCreatorViewDelegate> delegate;
 @end
+
 #import <UIKit/UIKit.h>
 #import "CalculationDetailViewController.h"
 
@@ -26,7 +27,7 @@
 @property (nonatomic,weak) id<SoilCreatorViewDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *soilNameField;
 @property (weak, nonatomic) IBOutlet UISwitch *soilUnitsSwitch;
-@property (nonatomic) Soil* soil;
+@property (nonatomic,strong) Soil  *thisSoil;
 @property (weak, nonatomic) IBOutlet UIStepper *frictionAngleStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *unitWeightStepper;
 @property (weak, nonatomic) IBOutlet UIStepper *cohesionStepper;
@@ -38,6 +39,10 @@
 
 - (IBAction)soilQuestions:(id)sender;
 - (IBAction)SwitchDidChange:(id)sender;
+- (IBAction)unitWtDidChange:(id)sender;
+- (IBAction)frictionAngleDidChange:(id)sender;
+- (IBAction)cohesionDidChange:(id)sender;
+- (IBAction)textFieldDismiss:(id)sender;
 
 
 - (IBAction)cancelButton:(id)sender;

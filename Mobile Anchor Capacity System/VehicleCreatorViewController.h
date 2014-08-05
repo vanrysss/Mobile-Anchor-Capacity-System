@@ -49,6 +49,7 @@
 - (IBAction)twQuestion:(id)sender;
 - (IBAction)wbQuestion:(id)sender;
 - (IBAction)saveVehicle:(id)sender;
+- (IBAction)cancelVehicle:(id)sender;
 
 - (IBAction)hgDidChange:(id)sender;
 - (IBAction)cgDidChange:(id)sender;
@@ -57,8 +58,9 @@
 - (IBAction)wbDidChange:(id)sender;
 - (IBAction)wvDidSet:(id)sender;
 
-
-@property (weak, nonatomic) IBOutlet UIButton *cancelCreationofVehicle;
+- (IBAction)classDidEnd:(id)sender;
+- (IBAction)typeDidEnd:(id)sender;
+- (IBAction)weightDidEnd:(id)sender;
 
 
 

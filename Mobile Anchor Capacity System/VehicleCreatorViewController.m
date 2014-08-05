@@ -38,19 +38,19 @@
 - (IBAction)unitsDidChange:(id)sender {
     
     if ([sender isOn]) {
-        self.vehicleWeightLabel = @"KG";
-        self.hgUnitLabel =@"M";
-        self.cgUnitLabel =@"M";
-        self.trackLengthUnitLabel = @"M";
-        self.trackWidthUnitLabel = @"M";
-        self.bladeWidthUnitLabel =@"M";
+        self.vehicleWeightLabel.text = @"KG";
+        self.hgUnitLabel.text =@"M";
+        self.cgUnitLabel.text =@"M";
+        self.trackLengthUnitLabel.text = @"M";
+        self.trackWidthUnitLabel.text = @"M";
+        self.bladeWidthUnitLabel.text =@"M";
     }else{
-        self.vehicleWeightLabel = @"LBS";
-        self.hgUnitLabel =@"Ft";
-        self.cgUnitLabel =@"Ft";
-        self.trackLengthUnitLabel = @"Ft";
-        self.trackWidthUnitLabel = @"Ft";
-        self.bladeWidthUnitLabel =@"Ft";
+        self.vehicleWeightLabel.text = @"LBS";
+        self.hgUnitLabel.text =@"Ft";
+        self.cgUnitLabel.text =@"Ft";
+        self.trackLengthUnitLabel.text = @"Ft";
+        self.trackWidthUnitLabel.text = @"Ft";
+        self.bladeWidthUnitLabel.text =@"Ft";
     }
 }
 
@@ -77,7 +77,7 @@
 }
 
 - (IBAction)wbQuestion:(id)sender {
-    [self popupmaker:@"Blade Widht" :@""];
+    [self popupmaker:@"Blade Width" :@""];
 }
 
 - (IBAction)saveVehicle:(id)sender {
@@ -89,9 +89,15 @@
     _vehicle.bladeWidth = [_bladeWidthLabel.text doubleValue];
     _vehicle.centerofGravityHeight = [_vehicleHeightLabel.text doubleValue];
     _vehicle.centerOfGravity = [_vehicleCenterOfGravityOffsetLabel.text doubleValue];
-    
+    NSLog(@"vehicle class %@", _vehicle.vehicleClass);
     [self.delegate addItemViewController:self didFinishItem:_vehicle];
+    [self.navigationController popViewControllerAnimated:YES];
 
+}
+
+
+- (IBAction)cancelVehicle:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)hgDidChange:(id)sender {
@@ -115,8 +121,20 @@
     self.bladeWidthLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.twSlider.value];
 }
 
-- (IBAction)wvDidSet:(id)sender {
-    self.vehicleWeightLabel.text = [NSString stringWithFormat:@"%@", self.vehicleWeightField.text];
+
+- (IBAction)classDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
+}
+
+- (IBAction)typeDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
+}
+
+- (IBAction)weightDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{

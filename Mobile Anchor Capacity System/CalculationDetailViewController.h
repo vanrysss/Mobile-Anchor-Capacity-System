@@ -7,7 +7,6 @@
 //
 
 
-@class CalculationDetailViewController;
 
 
 #import <UIKit/UIKit.h>
@@ -17,6 +16,9 @@
 #import "Calculation.h"
 #import "SoilCreatorViewController.h"
 #import "VehicleCreatorViewController.h"
+
+@class CalculationDetailViewController;
+@class Calculation;
 
 @protocol CalculationDetailViewControllerDelegate <NSObject>
 
@@ -69,6 +71,8 @@
 - (IBAction)SwitchDidChange:(id)sender;
 - (IBAction)LaunchSoilView:(id)sender;
 - (IBAction)LaunchVehicleView:(id)sender;
+- (IBAction)removeSoil:(id)sender;
+- (IBAction)removeVehicle:(id)sender;
 
 - (IBAction)haDidChange:(id)sender;
 - (IBAction)ladidChange:(id)sender;
@@ -90,7 +94,6 @@
 @property (strong, nonatomic) NSMutableArray *soilArray;
 
 
-@property (nonatomic,weak) id <CalculationDetailViewControllerDelegate> delegate;
 -(instancetype)initForNewItem:(BOOL)isNew;
 -(void)populateStaticVehicles:(NSMutableArray*)vehicles;
 -(void)populateStaticSoils:(NSMutableArray*)soils;

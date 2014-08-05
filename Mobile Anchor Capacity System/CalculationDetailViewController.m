@@ -7,12 +7,10 @@
 //
 
 #import "CalculationDetailViewController.h"
-#import "SoilCreatorViewController.h"
-#import "VehicleCreatorViewController.h"
-#import "CalculationItemStore.h"
 #import "Calculation.h"
 #import "Soil.h"
 #import "Vehicle.h"
+#import "CalculationItemStore.h"
 
 #define IMPERIAL_TO_METRIC 0.3048
 #define KG_TO_LBS 2.2
@@ -38,9 +36,9 @@
             self.navigationItem.rightBarButtonItem = doneItem;
             
             UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                        target:self
-                                                                                        action:@selector(cancel:)];
-            self.navigationItem.leftBarButtonItem = cancelItem;
+                 target:self
+                 action:@selector(cancel:)];
+                self.navigationItem.leftBarButtonItem = cancelItem;
         }
         
     }
@@ -214,12 +212,13 @@
 - (IBAction)LaunchSoilView:(id)sender {
     
     SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorView" bundle:NULL];
-    [self presentViewController:newSoilView animated:YES completion:nil];
+    [self.navigationController pushViewController:newSoilView animated:YES];
 }
 
-- (void)addItemViewController:(SoilCreatorViewController *)controller didFinishEnteringItem:(Soil *)item{
+- (void)SoilCreatorViewController:(SoilCreatorViewController *)controller didFinishEnteringItem:(Soil *)item{
     
     [self.soilArray addObject:item];
+    [self.soilPicker reloadAllComponents];
 }
 
 - (IBAction)LaunchVehicleView:(id)sender {
@@ -229,8 +228,21 @@
     [self presentViewController:newVehicleView animated:YES completion:nil];
 }
 
+- (IBAction)removeSoil:(id)sender {
+    NSInteger currentSelectedRow = [self.soilPicker selectedRowInComponent:0];
+    [self.soilArray removeObjectAtIndex:currentSelectedRow];
+    [self.soilPicker reloadAllComponents];
+}
+
+- (IBAction)removeVehicle:(id)sender {
+    NSInteger currentSelectedRow = [self.vehiclePicker selectedRowInComponent:0];
+    [self.vehicleArray removeObjectAtIndex:currentSelectedRow];
+    [self.vehiclePicker reloadAllComponents];
+}
+
 -(void)addItemViewController:(VehicleCreatorViewController *)controller didFinishItem:(Vehicle *)item{
     [self.vehicleArray addObject:item];
+    [self.vehiclePicker reloadAllComponents];
 }
 
 - (IBAction)haDidChange:(id)sender {
