@@ -148,7 +148,7 @@
 
 
 - (IBAction)calculateButton:(id)sender {
-    Calculation *calculation = _calculation;
+    Calculation *calculation = self.calculation;
     calculation.title = self.titleField.text;
     calculation.engineerName = self.engineerNameField.text;
     calculation.jobSite = self.jobsiteField.text;

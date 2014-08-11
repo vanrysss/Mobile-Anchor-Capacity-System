@@ -62,13 +62,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     [self.tableView reloadData];
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    
+    NSString *string = [NSString stringWithFormat:@"%d",[[[CalculationItemStore sharedStore] allCalculations] count] ];
+    NSLog(string);
     return [[[CalculationItemStore sharedStore] allCalculations] count];
+    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

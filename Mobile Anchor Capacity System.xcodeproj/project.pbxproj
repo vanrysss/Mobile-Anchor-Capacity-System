@@ -116,6 +116,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180DFA92199983C50078E358 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2D22463D192EBFC600865C2B /* Soil.h */,
+				2D22463E192EBFC600865C2B /* Soil.m */,
+				2D224640192EC14000865C2B /* Vehicle.h */,
+				2D224641192EC14000865C2B /* Vehicle.m */,
+				2D224643192EC2E100865C2B /* Calculation.h */,
+				2D224644192EC2E100865C2B /* Calculation.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		180DFA93199983D60078E358 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				2DD63CF119302D8200C27F12 /* CalculationItemStore.h */,
+				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
+				185DE525199834C900DE735B /* SoilItemStore.h */,
+				185DE526199834C900DE735B /* SoilItemStore.m */,
+				185DE528199834DA00DE735B /* VehicleItemStore.h */,
+				185DE529199834DA00DE735B /* VehicleItemStore.m */,
+			);
+			name = Stores;
+			sourceTree = "<group>";
+		};
+		180DFA94199983E60078E358 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2DD63CEE19302B5200C27F12 /* ItemsViewController.h */,
+				2DD63CEF19302B5200C27F12 /* ItemsViewController.m */,
+				2DC37EE419311E28001AC4DF /* HeaderView.xib */,
+				2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */,
+				2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */,
+				2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */,
+				2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */,
+				2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */,
+				2D5592A619874A3500975C9D /* VehicleCreatorViewController.h */,
+				2D5592A719874A3500975C9D /* VehicleCreatorViewController.m */,
+				2D5592A819874A3500975C9D /* VehicleCreatorViewController.xib */,
+				2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		2D2245FD192EA5F500865C2B = {
 			isa = PBXGroup;
 			children = (
@@ -149,36 +194,15 @@
 		2D22460F192EA5F500865C2B /* Mobile Anchor Capacity System */ = {
 			isa = PBXGroup;
 			children = (
+				180DFA94199983E60078E358 /* Views */,
+				180DFA93199983D60078E358 /* Stores */,
+				180DFA92199983C50078E358 /* Models */,
 				2D224618192EA5F500865C2B /* AppDelegate.h */,
 				2D224619192EA5F500865C2B /* AppDelegate.m */,
 				2D22461B192EA5F500865C2B /* Images.xcassets */,
 				2D224610192EA5F500865C2B /* Supporting Files */,
-				2D22463D192EBFC600865C2B /* Soil.h */,
-				2D22463E192EBFC600865C2B /* Soil.m */,
-				2D224640192EC14000865C2B /* Vehicle.h */,
-				2D224641192EC14000865C2B /* Vehicle.m */,
-				2D224643192EC2E100865C2B /* Calculation.h */,
-				2D224644192EC2E100865C2B /* Calculation.m */,
-				2DD63CEE19302B5200C27F12 /* ItemsViewController.h */,
-				2DD63CEF19302B5200C27F12 /* ItemsViewController.m */,
-				2DC37EE419311E28001AC4DF /* HeaderView.xib */,
-				2DD63CF119302D8200C27F12 /* CalculationItemStore.h */,
-				2DD63CF219302D8200C27F12 /* CalculationItemStore.m */,
-				2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */,
-				2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */,
-				2D7AC7FF195B9B8E00755FEA /* CalculationDetailView.xib */,
-				2DB1795C195A1FB100F7DDFD /* SoilCreatorViewController.h */,
-				2DB1795D195A1FB100F7DDFD /* SoilCreatorViewController.m */,
-				2D5592A619874A3500975C9D /* VehicleCreatorViewController.h */,
-				2D5592A719874A3500975C9D /* VehicleCreatorViewController.m */,
-				2D5592A819874A3500975C9D /* VehicleCreatorViewController.xib */,
-				2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */,
 				2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */,
 				2D54F656195CBCCA005C9B76 /* moment_basic.png */,
-				185DE525199834C900DE735B /* SoilItemStore.h */,
-				185DE526199834C900DE735B /* SoilItemStore.m */,
-				185DE528199834DA00DE735B /* VehicleItemStore.h */,
-				185DE529199834DA00DE735B /* VehicleItemStore.m */,
 			);
 			path = "Mobile Anchor Capacity System";
 			sourceTree = "<group>";
