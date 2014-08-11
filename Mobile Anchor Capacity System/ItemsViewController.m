@@ -152,7 +152,6 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     Calculation *newItem = [[CalculationItemStore sharedStore] createCalculation];
     
     CalculationDetailViewController *detailViewController = [[CalculationDetailViewController alloc]initForNewItem:YES];
-    
     detailViewController.calculation = newItem;
     
     detailViewController.dismissBlock = ^{
@@ -160,9 +159,9 @@ toIndexPath:(NSIndexPath *)destinationIndexPath
     };
     
     UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:detailViewController];
-    
     navController.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self presentViewController:navController animated:YES completion:NULL];
+  //  [self presentViewController:navController animated:YES completion:NULL];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 @end

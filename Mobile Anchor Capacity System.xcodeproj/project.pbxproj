@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		185DE527199834C900DE735B /* SoilItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE526199834C900DE735B /* SoilItemStore.m */; };
+		185DE52A199834DA00DE735B /* VehicleItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 185DE529199834DA00DE735B /* VehicleItemStore.m */; };
 		2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */; };
 		2D22460A192EA5F500865C2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D224609192EA5F500865C2B /* Foundation.framework */; };
 		2D22460C192EA5F500865C2B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22460B192EA5F500865C2B /* CoreGraphics.framework */; };
@@ -46,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185DE525199834C900DE735B /* SoilItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoilItemStore.h; sourceTree = "<group>"; };
+		185DE526199834C900DE735B /* SoilItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoilItemStore.m; sourceTree = "<group>"; };
+		185DE528199834DA00DE735B /* VehicleItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleItemStore.h; sourceTree = "<group>"; };
+		185DE529199834DA00DE735B /* VehicleItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleItemStore.m; sourceTree = "<group>"; };
 		2D0FE75C1932FF36001CCCF0 /* CalculationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculationDetailViewController.h; sourceTree = "<group>"; };
 		2D0FE75D1932FF36001CCCF0 /* CalculationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculationDetailViewController.m; sourceTree = "<group>"; };
 		2D224606192EA5F500865C2B /* Mobile Anchor Capacity System.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Anchor Capacity System.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +175,10 @@
 				2DB02AD01971FEDC0011B577 /* SoilCreatorView.xib */,
 				2D54F668195CE3FF005C9B76 /* MACSLoad@2x.png */,
 				2D54F656195CBCCA005C9B76 /* moment_basic.png */,
+				185DE525199834C900DE735B /* SoilItemStore.h */,
+				185DE526199834C900DE735B /* SoilItemStore.m */,
+				185DE528199834DA00DE735B /* VehicleItemStore.h */,
+				185DE529199834DA00DE735B /* VehicleItemStore.m */,
 			);
 			path = "Mobile Anchor Capacity System";
 			sourceTree = "<group>";
@@ -308,8 +318,10 @@
 				2DD63CF019302B5200C27F12 /* ItemsViewController.m in Sources */,
 				2D22461A192EA5F500865C2B /* AppDelegate.m in Sources */,
 				2DD63CF319302D8200C27F12 /* CalculationItemStore.m in Sources */,
+				185DE52A199834DA00DE735B /* VehicleItemStore.m in Sources */,
 				2D224616192EA5F500865C2B /* main.m in Sources */,
 				2D224642192EC14000865C2B /* Vehicle.m in Sources */,
+				185DE527199834C900DE735B /* SoilItemStore.m in Sources */,
 				2DB1795F195A1FB100F7DDFD /* SoilCreatorViewController.m in Sources */,
 				2D5592A919874A3500975C9D /* VehicleCreatorViewController.m in Sources */,
 				2D0FE75F1932FF36001CCCF0 /* CalculationDetailViewController.m in Sources */,

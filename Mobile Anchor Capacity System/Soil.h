@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Soil : NSObject
+@interface Soil : NSObject<NSCoding>
 
 @property NSString *soilType;
 @property double unitWeight;

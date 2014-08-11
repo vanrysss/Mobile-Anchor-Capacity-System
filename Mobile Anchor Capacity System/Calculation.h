@@ -13,7 +13,7 @@
 #define  KN_TO_KG  101.971
 #define  KG_TO_KN  0.00980665
 
-@interface Calculation : NSObject
+@interface Calculation : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic,copy)  NSString * engineerName;
@@ -37,7 +37,6 @@
 @property double momentValue;
 @property double forceValue;
 
-+ (instancetype)randomCalculation;
 -(double)Alpha1;
 -(double)Alpha2;
 -(double)Pp;

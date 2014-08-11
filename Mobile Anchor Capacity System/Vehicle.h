@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Vehicle : NSObject
+@interface Vehicle : NSObject<NSCoding>
 
 @property(retain,nonatomic) NSString *vehicleClass;
 @property(retain,nonatomic) NSString *vehicleType;
 @property double centerOfGravity; // distance of vehicle center of gravity from anchor
 @property double centerofGravityHeight; // height of center of gravity from soil
-@property double vehicleWeight; // weight of vehicle
+@property int vehicleWeight; // weight of vehicle
 @property double trackLength; //track length
 @property double trackWidth; //track width
 @property double bladeWidth; //blade width

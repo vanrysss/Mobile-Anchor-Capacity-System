@@ -7,12 +7,14 @@
 //
 
 #import "VehicleCreatorViewController.h"
+#import "VehicleItemStore.h"
 
 @interface VehicleCreatorViewController ()
 
 @end
 
 @implementation VehicleCreatorViewController
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,16 +83,17 @@
 }
 
 - (IBAction)saveVehicle:(id)sender {
-    _vehicle.vehicleClass = _vehicleClassField.text;
-    _vehicle.vehicleType = _vehicleTypeField.text;
-    _vehicle.vehicleWeight = [_vehicleWeightLabel.text doubleValue];
-    _vehicle.trackLength = [_trackLengthLabel.text doubleValue];
-    _vehicle.trackWidth = [_trackWidthLabel.text doubleValue];
-    _vehicle.bladeWidth = [_bladeWidthLabel.text doubleValue];
-    _vehicle.centerofGravityHeight = [_vehicleHeightLabel.text doubleValue];
-    _vehicle.centerOfGravity = [_vehicleCenterOfGravityOffsetLabel.text doubleValue];
-    NSLog(@"vehicle class %@", _vehicle.vehicleClass);
-    [self.delegate addItemViewController:self didFinishItem:_vehicle];
+    Vehicle *nerdVehicle = [[VehicleItemStore sharedStore]createVehicle];
+    nerdVehicle.vehicleClass = self.vehicleClassField.text;
+    nerdVehicle.vehicleType = self.vehicleTypeField.text;
+    nerdVehicle.vehicleWeight = [self.vehicleWeightLabel.text doubleValue];
+    nerdVehicle.trackLength = [self.trackLengthLabel.text doubleValue];
+    nerdVehicle.trackWidth = [self.trackWidthLabel.text doubleValue];
+    nerdVehicle.bladeWidth = [self.bladeWidthLabel.text doubleValue];
+    nerdVehicle.centerofGravityHeight = [self.vehicleHeightLabel.text doubleValue];
+    nerdVehicle.centerOfGravity = [self.vehicleCenterOfGravityOffsetLabel.text doubleValue];
+    NSLog(@"vehicle class %@", nerdVehicle.vehicleClass);
+    [delegate sendVehicleToCalcController:nerdVehicle];
     [self.navigationController popViewControllerAnimated:YES];
 
 }
@@ -118,7 +121,7 @@
 }
 
 - (IBAction)wbDidChange:(id)sender {
-    self.bladeWidthLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.twSlider.value];
+    self.bladeWidthLabel.text = [NSString stringWithFormat:@"%.1f", (double)self.wbSlider.value];
 }
 
 

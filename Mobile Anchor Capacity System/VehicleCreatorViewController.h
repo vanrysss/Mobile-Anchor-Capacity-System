@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Vehicle.h"
 @class VehicleCreatorViewController;
-@protocol VehicleCreatorViewDelegate <NSObject>
--(void)addItemViewController:(VehicleCreatorViewController *)controller didFinishItem:(Vehicle *)item;
 
-@property (nonatomic, weak) id <VehicleCreatorViewDelegate> delegate;
+@protocol SendVehicleBack <NSObject>
+-(void)sendVehicleToCalcController:(Vehicle *)vehicle;
 @end
 
 @interface VehicleCreatorViewController : UIViewController
 
-@property (weak,nonatomic) id <VehicleCreatorViewDelegate> delegate;
+@property (weak,nonatomic) id <SendVehicleBack> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *vehicleWeightField;
 @property (weak, nonatomic) IBOutlet UIStepper *hgSlider;
 @property (weak, nonatomic) IBOutlet UIStepper *cgSlider;

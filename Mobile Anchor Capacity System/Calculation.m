@@ -120,10 +120,6 @@
     
 }
 
-+(id)randomCalculation{
-    Calculation *newCalc = [[self alloc]initWithCalcTitle:@"name"];
-    return newCalc;
-}
 
 - (id)init {
     return [self initWithCalcTitle:@"title"];
@@ -148,6 +144,48 @@
 
 -(void) dealloc{
     NSLog(@"Destroyed: %@",self);
+}
+
+-(void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.engineerName forKey:@"engineerName"];
+    [aCoder encodeObject:self.jobSite forKey:@"jobSite"];
+    [aCoder encodeObject:self.creationDate forKey:@"creationDate"];
+  //  [aCoder encodeObject:self.calcSoil forKey:@"calcSoil"];
+  //  [aCoder encodeObject:self.calcVehicle forKey:@"calcVehicle"];
+    [aCoder encodeInt:self.beta forKey:@"beta"];
+    [aCoder encodeInt:self.theta forKey:@"theta"];
+    [aCoder encodeDouble:self.bladeDepth forKey:@"bladeDepth"];
+    [aCoder encodeDouble:self.delta forKey:@"delta"];
+    [aCoder encodeDouble:self.anchorSetback forKey:@"anchorSetback"];
+    [aCoder encodeDouble:self.anchorHeight forKey:@"anchorHeight"];
+    [aCoder encodeDouble:self.Kp forKey:@"Kp"];
+    [aCoder encodeDouble:self.momentValue forKey:@"momentValue"];
+    [aCoder encodeDouble:self.forceValue forKey:@"forceValue"];
+}
+
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if(self){
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _engineerName = [aDecoder decodeObjectForKey:@"engineerName"];
+        _jobSite = [aDecoder decodeObjectForKey:@"jobSite"];
+        _creationDate = [aDecoder decodeObjectForKey:@"creationDate"];
+      //  _calcSoil = [aDecoder decodeObjectForKey:@"calcSoil"];
+      //  _calcVehicle = [aDecoder decodeObjectForKey:@"calcVehicle"];
+        _bladeDepth = [aDecoder decodeDoubleForKey:@"bladeDepth"];
+        _beta = [aDecoder decodeIntForKey:@"beta"];
+        _theta = [aDecoder decodeIntForKey:@"theta"];
+        _delta = [aDecoder decodeDoubleForKey:@"delta"];
+        _anchorSetback = [aDecoder decodeDoubleForKey:@"anchorSetback"];
+        _anchorHeight = [aDecoder decodeDoubleForKey:@"anchorHeight"];
+        _Kp = [aDecoder decodeDoubleForKey:@"Kp"];
+        _momentValue = [aDecoder decodeDoubleForKey:@"momentValue"];
+        _forceValue = [aDecoder decodeDoubleForKey:@"forceValue"];
+
+
+    }
+    return self;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "SoilCreatorViewController.h"
+#import "SoilItemStore.h"
 
 #define IMPERIAL_TO_METRIC 0.3048
 #define KG_TO_LBS 2.2
@@ -16,7 +17,7 @@
 @end
 
 @implementation SoilCreatorViewController
-
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view from its nib.    
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,22 +102,22 @@
 
 - (IBAction)saveButton:(id)sender {
     
-    self.thisSoil = [[Soil alloc] init];
+    Soil *nerdSoil = [[SoilItemStore sharedStore]createSoil];
     
-    _thisSoil.soilType = self.soilNameField.text;
+    nerdSoil.soilType = self.soilNameField.text;
     NSLog(@"soil  type field %@", self.soilNameField.text);
-    NSLog(@"soil type: %@", _thisSoil.soilType);
+    NSLog(@"soil type: %@",nerdSoil.soilType);
 
     _thisSoil.frictionAngle = [self.frictionAngleValue.text integerValue];
     
     if ([self.soilUnitsSwitch isOn] ) {
-        _thisSoil.cohesion = [self.cohesionValue.text doubleValue];
-        _thisSoil.unitWeight = [self.unitWeightValue.text doubleValue];
+        nerdSoil.cohesion = [self.cohesionValue.text doubleValue];
+        nerdSoil.unitWeight = [self.unitWeightValue.text doubleValue];
     }else{
-        _thisSoil.cohesion = [self.cohesionValue.text doubleValue];
-        _thisSoil.unitWeight = [self.unitWeightValue.text doubleValue];
+        nerdSoil.cohesion = [self.cohesionValue.text doubleValue];
+        nerdSoil.unitWeight = [self.unitWeightValue.text doubleValue];
     }
-    [self.delegate SoilCreatorViewController:self didFinishItem:_thisSoil];
+    [delegate SendSoilToCalcController:nerdSoil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

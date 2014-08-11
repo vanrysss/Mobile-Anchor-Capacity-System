@@ -11,6 +11,7 @@
 #import "Soil.h"
 #import "Vehicle.h"
 #import "CalculationItemStore.h"
+#import "SoilCreatorViewController.h"
 
 #define IMPERIAL_TO_METRIC 0.3048
 #define KG_TO_LBS 2.2
@@ -88,7 +89,7 @@
 
 - (void)save:(id)sender
 {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)cancel:(id)sender
@@ -96,7 +97,7 @@
     // If the user cancelled, then remove the Item from the store
     [[CalculationItemStore sharedStore] removeItem:self.calculation];
     
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:self.dismissBlock];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -131,11 +132,13 @@
     [self.view endEditing:YES];
     
     //save changes
-    Calculation *calculation = self.calculation;
-    calculation.title = self.titleField.text;
-    calculation.engineerName = self.engineerNameField.text;
-    calculation.jobSite = self.jobsiteField.text;
-    
+    BOOL success = [[CalculationItemStore sharedStore]saveChanges];
+    if(success){
+        NSLog(@"Saved all calcs");
+        
+    }else{
+        NSLog(@"failure saving");
+    }
 }
 
 -(void)setItem:(Calculation *)calculation{
@@ -212,25 +215,33 @@
 - (IBAction)LaunchSoilView:(id)sender {
     
     SoilCreatorViewController *newSoilView = [[SoilCreatorViewController alloc]initWithNibName:@"SoilCreatorView" bundle:NULL];
+    newSoilView.delegate =self;
     [self.navigationController pushViewController:newSoilView animated:YES];
 }
 
-- (void)SoilCreatorViewController:(SoilCreatorViewController *)controller didFinishEnteringItem:(Soil *)item{
-    
-    [self.soilArray addObject:item];
+
+- (void)SendSoilToCalcController:(Soil *)asoil{
+    NSLog(@"received soil");
+    [self.soilArray addObject:asoil];
     [self.soilPicker reloadAllComponents];
+}
+
+-(void)sendVehicleToCalcController:(Vehicle *)vehicle{
+    [self.vehicleArray addObject:vehicle];
+    [self.vehiclePicker reloadAllComponents];
 }
 
 - (IBAction)LaunchVehicleView:(id)sender {
     
     VehicleCreatorViewController *newVehicleView = [[VehicleCreatorViewController alloc]initWithNibName:@"VehicleCreatorViewController" bundle:NULL];
-    
-    [self presentViewController:newVehicleView animated:YES completion:nil];
+    newVehicleView.delegate =self;
+    [self.navigationController pushViewController:newVehicleView animated:YES];
 }
 
 - (IBAction)removeSoil:(id)sender {
     NSInteger currentSelectedRow = [self.soilPicker selectedRowInComponent:0];
     [self.soilArray removeObjectAtIndex:currentSelectedRow];
+    
     [self.soilPicker reloadAllComponents];
 }
 
@@ -242,6 +253,7 @@
 
 -(void)addItemViewController:(VehicleCreatorViewController *)controller didFinishItem:(Vehicle *)item{
     [self.vehicleArray addObject:item];
+    
     [self.vehiclePicker reloadAllComponents];
 }
 
@@ -287,6 +299,21 @@
 - (IBAction)betaQuestion:(id)sender {
     [self popupmaker:@"Beta" :@"Beta is the angle of slope from the horizontal plane."];
    
+}
+
+- (IBAction)titleDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
+}
+
+- (IBAction)engineerDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
+}
+
+- (IBAction)jobsiteDidEnd:(id)sender {
+    [[self view] endEditing:YES];
+
 }
 
 -(void)popupmaker:(NSString *)title :(NSString *)message{

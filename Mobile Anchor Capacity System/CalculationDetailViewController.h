@@ -5,20 +5,8 @@
 //  Created by Sam Van Ryssegem on 5/25/14.
 //  Copyright (c) 2014 VanR. All rights reserved.
 //
-
-
-
-
-#import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
-#import "Soil.h"
-#import "Vehicle.h"
 #import "Calculation.h"
-#import "SoilCreatorViewController.h"
-#import "VehicleCreatorViewController.h"
-
 @class CalculationDetailViewController;
-@class Calculation;
 
 @protocol CalculationDetailViewControllerDelegate <NSObject>
 
@@ -27,7 +15,20 @@
 
 @end
 
-@interface CalculationDetailViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate,SoilCreatorViewDelegate,VehicleCreatorViewDelegate>{
+
+#import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Soil.h"
+#import "Vehicle.h"
+
+#import "SoilCreatorViewController.h"
+#import "VehicleCreatorViewController.h"
+
+@class Calculation;
+
+
+
+@interface CalculationDetailViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate,CLLocationManagerDelegate,SendVehicleBack,SendSoilBack>{
 
     UIPickerView *vehiclePicker;
     NSMutableArray *vehicleArray;
@@ -86,6 +87,9 @@
 -(IBAction)dbQuestion:(id)sender;
 -(IBAction)thetaQuestion:(id)sender;
 - (IBAction)betaQuestion:(id)sender;
+- (IBAction)titleDidEnd:(id)sender;
+- (IBAction)engineerDidEnd:(id)sender;
+- (IBAction)jobsiteDidEnd:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *forceLabel;

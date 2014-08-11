@@ -4,27 +4,21 @@
 //
 //  Created by Sam Van Ryssegem on 6/24/14.
 //  Copyright (c) 2014 VanR. All rights reserved.
-//
 #import "Soil.h"
+#import <UIKit/UIKit.h>
 
 @class SoilCreatorViewController;
 
-@protocol SoilCreatorViewDelegate <NSObject>
--(void)SoilCreatorViewController:(SoilCreatorViewController *)controller didFinishItem:(Soil *)item;
-
-@property (nonatomic, weak) id <SoilCreatorViewDelegate> delegate;
+@protocol SendSoilBack<NSObject>
+-(void)SendSoilToCalcController:(Soil*) soil;
+//@property (nonatomic,weak) id<SendSoilBack> delegate;
 @end
-
-#import <UIKit/UIKit.h>
-#import "CalculationDetailViewController.h"
-
-
 
 
 
 @interface SoilCreatorViewController : UIViewController
 
-@property (nonatomic,weak) id<SoilCreatorViewDelegate> delegate;
+@property (weak,nonatomic) id<SendSoilBack> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *soilNameField;
 @property (weak, nonatomic) IBOutlet UISwitch *soilUnitsSwitch;
 @property (nonatomic,strong) Soil  *thisSoil;
